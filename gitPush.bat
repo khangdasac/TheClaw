@@ -1,0 +1,2 @@
+@echo
+node gitPush.js
