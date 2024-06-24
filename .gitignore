@@ -2,12 +2,6 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-node_modules
-package-lock.json
-package.json
-gitPush.js
-gitPush.bat
-
 
 /[Ll]ibrary/
 /[Tt]emp/
