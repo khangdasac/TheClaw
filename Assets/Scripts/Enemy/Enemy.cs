@@ -14,17 +14,51 @@ public class Enemy : MonoBehaviour
 
     public Path path;
 
+    private GameObject player;
+    public float sightDistance = 20f;
+    public float fieldOfView = 85f;
+    public float eyeHeight;
+
+
     // Start is called before the first frame update
     void Start()
     {
         stateMachine = GetComponent<StateMachine>();
         agent = GetComponent<NavMeshAgent>();
         stateMachine.Initialise();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        CanSeePlayer();
+        currentState = stateMachine.activeState.ToString();
+    }
+
+    public bool CanSeePlayer()
+    {
+        if(player != null)
+        {
+            if(Vector3.Distance(transform.position, player.transform.position) < sightDistance)
+            {
+                Vector3 targetDirection = player.transform.position - transform.position - Vector3.up * eyeHeight;
+                float angelToPlayer = Vector3.Angle(targetDirection, transform.forward);
+                if(angelToPlayer > - fieldOfView && angelToPlayer < fieldOfView) 
+                {
+                    Ray ray = new Ray(transform.position + Vector3.up * eyeHeight, targetDirection);
+                    Debug.DrawRay(ray.origin, ray.direction * sightDistance);
+                    RaycastHit hitInfo = new RaycastHit();
+                    if(Physics.Raycast(ray,out hitInfo, sightDistance))
+                    {
+                        if(hitInfo.transform.gameObject == player)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
     }
 }
