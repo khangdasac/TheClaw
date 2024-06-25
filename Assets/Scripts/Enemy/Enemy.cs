@@ -7,19 +7,23 @@ public class Enemy : MonoBehaviour
 {
     private StateMachine stateMachine;
     private NavMeshAgent agent;
+    private GameObject player;
     public NavMeshAgent Agent { get => agent; }
-
-    [SerializeField]
-    private string currentState;
+    public GameObject Player { get => player;}
 
     public Path path;
 
-    private GameObject player;
+    [Header("Sight Values")]
     public float sightDistance = 20f;
     public float fieldOfView = 85f;
     public float eyeHeight;
 
-
+    [Header("Weapon Values")]
+    public Transform gunBarrel;
+    [Range(0.1f, 10f)]
+    public float fireRate;
+    [SerializeField]
+    private string currentState;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,11 +42,11 @@ public class Enemy : MonoBehaviour
 
     public bool CanSeePlayer()
     {
-        if(player != null)
+        if(Player != null)
         {
-            if(Vector3.Distance(transform.position, player.transform.position) < sightDistance)
+            if(Vector3.Distance(transform.position, Player.transform.position) < sightDistance)
             {
-                Vector3 targetDirection = player.transform.position - transform.position - Vector3.up * eyeHeight;
+                Vector3 targetDirection = Player.transform.position - transform.position - Vector3.up * eyeHeight;
                 float angelToPlayer = Vector3.Angle(targetDirection, transform.forward);
                 if(angelToPlayer > - fieldOfView && angelToPlayer < fieldOfView) 
                 {
@@ -51,7 +55,7 @@ public class Enemy : MonoBehaviour
                     RaycastHit hitInfo = new RaycastHit();
                     if(Physics.Raycast(ray,out hitInfo, sightDistance))
                     {
-                        if(hitInfo.transform.gameObject == player)
+                        if(hitInfo.transform.gameObject == Player)
                         {
                             return true;
                         }

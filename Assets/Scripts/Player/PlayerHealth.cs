@@ -31,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         health = Mathf.Clamp(health, 0, maxHealth);
+
         UpadteHealthUI();
         if(overlay.color.a > 0)
         {
