@@ -30,3 +30,5 @@ exec('git add .', (err, stdout, stderr) => {
         });
     });
 });
+
+console.log("Thành công");
