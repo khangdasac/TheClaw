@@ -27,8 +27,9 @@ exec('git add .', (err, stdout, stderr) => {
             if (err) {
                 return;
             }
+			console.log("Thành công");
         });
     });
 });
 
-console.log("Thành công");
+
