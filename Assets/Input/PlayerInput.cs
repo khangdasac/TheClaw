@@ -62,20 +62,18 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpeedUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""7d201e3d-3032-415a-9a52-0bf8e0603c34"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""75b892e6-e595-4b74-b0db-c71e70e0e4a1"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": ""WASD"",
                     ""id"": ""4138b12c-b60a-4104-979a-f15bd40af915"",
@@ -249,6 +247,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9489c929-132f-4f73-8dca-21e931fc2453"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpeedUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -779,6 +788,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_Jump = m_OnFoot.FindAction("Jump", throwIfNotFound: true);
         m_OnFoot_Look = m_OnFoot.FindAction("Look", throwIfNotFound: true);
         m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
+        m_OnFoot_SpeedUp = m_OnFoot.FindAction("SpeedUp", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -856,6 +866,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Jump;
     private readonly InputAction m_OnFoot_Look;
     private readonly InputAction m_OnFoot_Interact;
+    private readonly InputAction m_OnFoot_SpeedUp;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -864,6 +875,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_OnFoot_Jump;
         public InputAction @Look => m_Wrapper.m_OnFoot_Look;
         public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
+        public InputAction @SpeedUp => m_Wrapper.m_OnFoot_SpeedUp;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -885,6 +897,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @SpeedUp.started += instance.OnSpeedUp;
+            @SpeedUp.performed += instance.OnSpeedUp;
+            @SpeedUp.canceled += instance.OnSpeedUp;
         }
 
         private void UnregisterCallbacks(IOnFootActions instance)
@@ -901,6 +916,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @SpeedUp.started -= instance.OnSpeedUp;
+            @SpeedUp.performed -= instance.OnSpeedUp;
+            @SpeedUp.canceled -= instance.OnSpeedUp;
         }
 
         public void RemoveCallbacks(IOnFootActions instance)
@@ -1042,6 +1060,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnSpeedUp(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

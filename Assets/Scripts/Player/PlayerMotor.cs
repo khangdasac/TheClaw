@@ -7,15 +7,20 @@ public class PlayerMotor : MonoBehaviour
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool isGrounded;
-    public float speed = 8f;
-    public float gavity = -9.8f;
+
+    [Header("Player's parameters")]
+    public float speed = 10f;
+    public float highSpeed = 20f;
+    public float lowSpeed = 5f;
+    public float normalSpeed = 10f;
     public float jumpHeight = 1.5f;
 
+    [Header ("Specifications")]
+    public float gavity = -9.8f;
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
-
     }
 
     // Update is called once per frame

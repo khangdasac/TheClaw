@@ -24,6 +24,14 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(onFoot.SpeedUp.IsPressed())
+        {
+            playerMotor.speed = playerMotor.highSpeed;
+        }
+        else
+        {
+            playerMotor.speed = playerMotor.normalSpeed;
+        }
         playerMotor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
     }
 

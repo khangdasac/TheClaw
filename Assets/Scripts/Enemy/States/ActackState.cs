@@ -54,7 +54,7 @@ public class ActackState : BaseState
     {
         Transform gunBarrel = enemy.gunBarrel;
         GameObject bullet = GameObject.Instantiate(Resources.Load("Prefabs/Bullet") as GameObject, gunBarrel.position, enemy.transform.rotation);
-        Vector3 shootDirection = enemy.Player.transform.position - gunBarrel.transform.position;
+        Vector3 shootDirection = (enemy.Player.transform.position - gunBarrel.transform.position).normalized;
         bullet.GetComponent<Rigidbody>().velocity = Quaternion.AngleAxis(Random.Range(-3f, 3f), Vector3.up) * shootDirection * bulletSpeed;
 
         shotTimer = 0;

@@ -48,15 +48,15 @@ public class Enemy : MonoBehaviour
             {
                 Vector3 targetDirection = Player.transform.position - transform.position - Vector3.up * eyeHeight;
                 float angelToPlayer = Vector3.Angle(targetDirection, transform.forward);
-                if(angelToPlayer > - fieldOfView && angelToPlayer < fieldOfView) 
+                if(angelToPlayer >= - fieldOfView && angelToPlayer <= fieldOfView) 
                 {
                     Ray ray = new Ray(transform.position + Vector3.up * eyeHeight, targetDirection);
-                    Debug.DrawRay(ray.origin, ray.direction * sightDistance);
                     RaycastHit hitInfo = new RaycastHit();
                     if(Physics.Raycast(ray,out hitInfo, sightDistance))
                     {
                         if(hitInfo.transform.gameObject == Player)
                         {
+                            Debug.DrawRay(ray.origin, ray.direction * sightDistance);
                             return true;
                         }
                     }
