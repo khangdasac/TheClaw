@@ -58,12 +58,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e6292b2c06870d4495f009f912b9600, type: 3}
+  m_Script: {fileID: 11500000, guid: 9bb35e35cb87275459c291fde01d3606, type: 3}
   m_Name: PPProfile
   m_EditorClassIdentifier: 
-  settings:
-  - {fileID: -3898617414883486329}
-  - {fileID: 2115521662416282713}
 --- !u!114 &2115521662416282713
 MonoBehaviour:
   m_ObjectHideFlags: 3
