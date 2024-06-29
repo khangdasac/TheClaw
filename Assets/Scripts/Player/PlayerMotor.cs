@@ -82,25 +82,27 @@ public class PlayerMotor : MonoBehaviour
 
     public void Roll(Vector3 roll)
     {
+
         if (isRolling)
         {
             playerAnimator.SetBool("isRoll", true);
-            if (roll.Equals(Vector3.zero))
-                rollDirection = Vector3.forward;
-            else
-                rollDirection = new Vector3(roll.x, 0, roll.y);
 
+            if (!roll.Equals(Vector3.zero))
+            {
+                rollDirection = new Vector3(roll.x, 0, roll.y);
+            }
+
+            playerAnimator.SetFloat("moveX", rollDirection.x);
+            playerAnimator.SetFloat("moveY", rollDirection.y);
 
             deltaRollTimer += Time.deltaTime;
             if (deltaRollTimer > rollTimer)
             {
                 isRolling = false;
                 deltaRollTimer = 0;
+                rollDirection = Vector3.zero;
                 playerAnimator.SetBool("isRoll", false);
             }
-
-            Debug.Log(rollDirection);
-
 
             controller.Move(transform.TransformDirection(rollDirection) * rollSpeed * Time.deltaTime);
         }

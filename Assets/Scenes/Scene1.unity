@@ -3466,10 +3466,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   speed: 10
-  highSpeed: 15
+  highSpeed: 12
   lowSpeed: 5
-  normalSpeed: 10
-  jumpHeight: 1.5
+  normalSpeed: 8
+  jumpHeight: 2
   gavity: -20
   isRolling: 0
   rollDirection: {x: 0, y: 0, z: 0}

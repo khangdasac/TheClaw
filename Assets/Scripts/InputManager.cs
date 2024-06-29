@@ -25,20 +25,14 @@ public class InputManager : MonoBehaviour
     void FixedUpdate()
     {
         if(onFoot.SpeedUp.IsPressed())
-        {
             playerMotor.speed = playerMotor.highSpeed;
-        }
         else
-        {
             playerMotor.speed = playerMotor.normalSpeed;
-        }
-
-
-        if(onFoot.Roll.IsPressed() && !playerMotor.isRolling)
+        
+        if(onFoot.Roll.IsPressed() && !playerMotor.isRolling && !onFoot.Movement.ReadValue<Vector2>().Equals(Vector3.zero))
         {
             playerMotor.isRolling = true;
         }
-
 
         playerMotor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
         playerMotor.Roll(onFoot.Movement.ReadValue<Vector2>());
