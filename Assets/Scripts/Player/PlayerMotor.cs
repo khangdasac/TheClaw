@@ -93,7 +93,7 @@ public class PlayerMotor : MonoBehaviour
             }
 
             playerAnimator.SetFloat("moveX", rollDirection.x);
-            playerAnimator.SetFloat("moveY", rollDirection.y);
+            playerAnimator.SetFloat("moveY", rollDirection.z);
 
             deltaRollTimer += Time.deltaTime;
             if (deltaRollTimer > rollTimer)
