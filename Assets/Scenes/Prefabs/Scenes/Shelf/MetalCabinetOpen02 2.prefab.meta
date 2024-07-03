@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: b94d3835066353a4884d6fd1348a9c81
+labels:
+- clean
+- weathered
+- doors
+- animated
+- rust
+- rusted
+- metal
+- industrial
+- container
+- pbr
+- decoration
+- furniture
+- interior
+- decorating
+- shelf
+- cabinet
+- postapocalyptic
+- aged
+timeCreated: 1454496987
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

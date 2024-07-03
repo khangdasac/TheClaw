@@ -3,37 +3,7 @@ guid: b5df4356a984457408be914e84b8b939
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: BaseMat_Character
-    second: {fileID: 2100000, guid: 1d8b922be16a8b94195c398c91483a1f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: BaseMat_Character1
-    second: {fileID: 2100000, guid: 1d8b922be16a8b94195c398c91483a1f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__BaseMat_Character
-    second: {fileID: 2100000, guid: 36c6e3d39d8094b4ba725d6358f6b9c1, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__BaseMat_Character1
-    second: {fileID: 2100000, guid: 8f225c91fd1bc984ca45d617d37d6037, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__BaseMat_Character2
-    second: {fileID: 2100000, guid: 36c6e3d39d8094b4ba725d6358f6b9c1, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__BaseMat_Character3
-    second: {fileID: 2100000, guid: 8f225c91fd1bc984ca45d617d37d6037, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 1
     materialName: 0

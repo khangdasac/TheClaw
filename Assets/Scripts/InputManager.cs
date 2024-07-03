@@ -29,13 +29,8 @@ public class InputManager : MonoBehaviour
         else
             playerMotor.speed = playerMotor.normalSpeed;
         
-        if(onFoot.Roll.IsPressed() && !playerMotor.isRolling && !onFoot.Movement.ReadValue<Vector2>().Equals(Vector3.zero))
-        {
-            playerMotor.isRolling = true;
-        }
 
         playerMotor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
-        playerMotor.Roll(onFoot.Movement.ReadValue<Vector2>());
         
     }
 

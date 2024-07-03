@@ -19,13 +19,6 @@ public class PlayerMotor : MonoBehaviour
     [Header ("Specifications")]
     public float gavity = -9.8f;
 
-    [Header("Roll")]
-    public bool isRolling = false;
-    public Vector3 rollDirection;
-    public float rollTimer = 1f;
-    public float rollSpeed = 100f;
-    public float deltaRollTimer;
-
     [Header("Animator")]
     public PlayerAnimator playerAnimator;
     // Start is called before the first frame update
@@ -77,34 +70,6 @@ public class PlayerMotor : MonoBehaviour
         {
             playerAnimator.SetTrigger("isJump");
             playerVelocity.y = Mathf.Sqrt(-2.0f * jumpHeight * gavity);
-        }
-    }
-
-    public void Roll(Vector3 roll)
-    {
-
-        if (isRolling)
-        {
-            playerAnimator.SetBool("isRoll", true);
-
-            if (!roll.Equals(Vector3.zero))
-            {
-                rollDirection = new Vector3(roll.x, 0, roll.y);
-            }
-
-            playerAnimator.SetFloat("moveX", rollDirection.x);
-            playerAnimator.SetFloat("moveY", rollDirection.z);
-
-            deltaRollTimer += Time.deltaTime;
-            if (deltaRollTimer > rollTimer)
-            {
-                isRolling = false;
-                deltaRollTimer = 0;
-                rollDirection = Vector3.zero;
-                playerAnimator.SetBool("isRoll", false);
-            }
-
-            controller.Move(transform.TransformDirection(rollDirection) * rollSpeed * Time.deltaTime);
         }
     }
 
