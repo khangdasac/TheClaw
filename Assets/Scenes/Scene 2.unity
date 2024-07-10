@@ -231,7 +231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &124701779
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2274,15 +2274,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 68d59539aed38464ab78bbd5725301c8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 68d59539aed38464ab78bbd5725301c8, type: 3}
       propertyPath: m_LocalScale.y
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 68d59539aed38464ab78bbd5725301c8, type: 3}
       propertyPath: m_LocalScale.z
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 68d59539aed38464ab78bbd5725301c8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5631,7 +5631,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2099342993}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.4
+  m_Radius: 0.5
   m_Speed: 10
   m_Acceleration: 50
   avoidancePriority: 50
@@ -5669,13 +5669,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: {fileID: 44993857}
-  sightDistance: 10
+  sightDistance: 80
   fieldOfView: 85
-  eyeHeight: 0.8
+  eyeHeight: 11
   gunBarrel: {fileID: 0}
   fireRate: 2.42
   currentState: 
   animator: {fileID: 2099343002}
+  navMeshAgent: {fileID: 2099342994}
 --- !u!136 &2099343000
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5695,10 +5696,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.40360478
-  m_Height: 1.8027422
+  m_Radius: 0.49995676
+  m_Height: 1.8027424
   m_Direction: 1
-  m_Center: {x: -0.0077682906, y: 0.893868, z: 0.0012160711}
+  m_Center: {x: 0.004799366, y: 0.8938682, z: 0.0012160711}
 --- !u!95 &2099343002 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 68d59539aed38464ab78bbd5725301c8, type: 3}

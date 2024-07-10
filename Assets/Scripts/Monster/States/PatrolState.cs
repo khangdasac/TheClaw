@@ -23,7 +23,7 @@ public class PatrolState : BaseState
         PatrolCycle();
         if (monster.CanSeePlayer())
         {
-            stateMachine.ChangeState(new ActackState());
+            stateMachine.ChangeState(new ChaseState());
         }
     }
 
