@@ -8,6 +8,8 @@ public class ChaseState : BaseState
     private float losePlayerTimer;
     private float shotTimer;
     private Vector3 lastPlayerPosition;
+    private static float waitTimer = 4f;
+    private static float speedChase = 15f;
     public override void Enter()
     {
         
@@ -24,9 +26,9 @@ public class ChaseState : BaseState
         {
             monster.animator.SetFloat("Speed", 20);
             losePlayerTimer = 0;
-            lastPlayerPosition = monster.Player.transform.position + Vector3.up * 1.6f;
+            lastPlayerPosition = monster.Player.transform.position + Vector3.up * 2f;
 
-            monster.navMeshAgent.speed = 20;
+            monster.navMeshAgent.speed = speedChase;
             monster.Agent.SetDestination(lastPlayerPosition);
 
         }
@@ -34,7 +36,7 @@ public class ChaseState : BaseState
         {
             monster.animator.SetFloat("Speed", 0);
             losePlayerTimer += Time.deltaTime;
-            if (losePlayerTimer > 8)
+            if (losePlayerTimer > waitTimer)
             {
                 //Change to search state
                 stateMachine.ChangeState(new PatrolState());

@@ -15,7 +15,7 @@ public class Monster : MonoBehaviour
 
     [Header("Sight Values")]
     public float sightDistance = 30f;
-    public float fieldOfView = 85f;
+    public float fieldOfView = 80f;
     public float eyeHeight;
 
     [Header("Weapon Values")]
@@ -52,16 +52,16 @@ public class Monster : MonoBehaviour
         if(Player != null)
         {
 
-            if (Vector3.Distance(transform.position, Player.transform.position + Vector3.up * 1.6f) < sightDistance)
+            if (Vector3.Distance(transform.position, Player.transform.position + Vector3.up * 2f) < sightDistance)
             {
 
-                Vector3 targetDirection = Player.transform.position + Vector3.up * 1.6f - (transform.position + Vector3.up * eyeHeight);
+                Vector3 targetDirection = Player.transform.position + Vector3.up * 2f - (transform.position + Vector3.up * eyeHeight);
                 float angelToPlayer = Vector3.Angle(targetDirection, transform.forward);
-                Debug.Log("Đủ khoảng cách");
+
 
                 if (angelToPlayer >= - fieldOfView && angelToPlayer <= fieldOfView) 
                 {
-                    Debug.Log("Đủ góc");
+
                     Ray ray = new Ray(transform.position + Vector3.up * eyeHeight, targetDirection);
                     RaycastHit hitInfo = new RaycastHit();
                     Debug.DrawRay(ray.origin, ray.direction * sightDistance);
@@ -78,6 +78,8 @@ public class Monster : MonoBehaviour
                 }
             }
         }
+        Debug.Log("Monster don't see player");
+
         return false;
     }
 }

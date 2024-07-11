@@ -371,6 +371,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 156279553}
+  - component: {fileID: 156279554}
   m_Layer: 0
   m_Name: Scene
   m_TagString: Untagged
@@ -418,6 +419,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &156279554
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156279552}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &169037269 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8073916687991813723, guid: 0eccacf6ed8ac11438787aa3745cc523, type: 3}
@@ -5671,7 +5693,7 @@ MonoBehaviour:
   path: {fileID: 44993857}
   sightDistance: 80
   fieldOfView: 85
-  eyeHeight: 11
+  eyeHeight: 9
   gunBarrel: {fileID: 0}
   fireRate: 2.42
   currentState: 
@@ -5980,7 +6002,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 195852365436762265, guid: f73804a3b3563904f9e7ba3a7c7ec6f1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27.6
+      value: -44
       objectReference: {fileID: 0}
     - target: {fileID: 195852365436762265, guid: f73804a3b3563904f9e7ba3a7c7ec6f1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5988,7 +6010,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 195852365436762265, guid: f73804a3b3563904f9e7ba3a7c7ec6f1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.8
+      value: -7.2
       objectReference: {fileID: 0}
     - target: {fileID: 195852365436762265, guid: f73804a3b3563904f9e7ba3a7c7ec6f1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6269,6 +6291,14 @@ PrefabInstance:
     - target: {fileID: 1931472784361869117, guid: f73804a3b3563904f9e7ba3a7c7ec6f1, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1944702956110671365, guid: f73804a3b3563904f9e7ba3a7c7ec6f1, type: 3}
+      propertyPath: m_Height
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1944702956110671365, guid: f73804a3b3563904f9e7ba3a7c7ec6f1, type: 3}
+      propertyPath: m_Center.y
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 1966582850512334080, guid: f73804a3b3563904f9e7ba3a7c7ec6f1, type: 3}
       propertyPath: m_Layer
