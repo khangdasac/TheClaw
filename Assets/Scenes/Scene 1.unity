@@ -328,6 +328,7 @@ GameObject:
   - component: {fileID: 95944735}
   - component: {fileID: 95944734}
   - component: {fileID: 95944737}
+  - component: {fileID: 95944738}
   m_Layer: 6
   m_Name: KeyPad 1
   m_TagString: Untagged
@@ -433,9 +434,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a76b8402dd65240ae77350b1eaaa08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useEvents: 0
+  useEvents: 1
   promptMessage: Press E to use keypad
   door: {fileID: 202384814}
+--- !u!114 &95944738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95944732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98ce1d3e1d56954cb6572db64dd5f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &151785864
 GameObject:
   m_ObjectHideFlags: 0
@@ -3619,6 +3635,8 @@ MonoBehaviour:
   gunBarrel: {fileID: 1890643609}
   fireRate: 2.42
   currentState: 
+  animator: {fileID: 0}
+  navMeshAgent: {fileID: 0}
 --- !u!195 &1723993950
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4012,7 +4030,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.33333334
+  m_VoxelSize: 0.8333333
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 8fd4ff84d07ddcb40981dec52284c883, type: 2}
   m_BuildHeightMesh: 0
