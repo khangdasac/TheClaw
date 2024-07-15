@@ -39,4 +39,9 @@ public class PlayerUI : MonoBehaviour
         bagUI.SetActive(false);
         inputManager.SwitchActionMap("OnFoot");
     }
+
+    public void click()
+    {
+        Debug.Log("Hello");
+    }
 }

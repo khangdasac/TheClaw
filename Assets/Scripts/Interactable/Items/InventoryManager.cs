@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -8,6 +8,7 @@ public class InventoryManager : MonoBehaviour
 {
     private static InventoryManager instance;
     public List<Item> items = new List<Item>();
+    public int maxItems = 30;
 
     public Transform itemContent;
     public GameObject inventoryItem;
@@ -21,7 +22,15 @@ public class InventoryManager : MonoBehaviour
 
     public void addItem(Item item)
     {
-        items.Add(item);
+        if (items.Contains(item))
+        {
+            item.quantity++;
+        }
+        else
+        {
+            items.Add(item);
+            item.quantity = 1;
+        }
     }
 
     public void removeItem(Item item)
@@ -41,10 +50,14 @@ public class InventoryManager : MonoBehaviour
             GameObject obj = Instantiate(inventoryItem, itemContent);
             var itemName = obj.transform.Find("ItemName").GetComponent<TextMeshProUGUI>();
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
+            var quantity = obj.transform.Find("Quantity").GetComponent<TextMeshProUGUI>();
 
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
+            if(item.quantity > 1)
+            {
+                quantity.text = item.quantity.ToString();
+            }
         }
     }
-
 }

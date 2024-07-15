@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,18 @@ public class Item : ScriptableObject
 {
     public int id;
     public string itemName;
-    public int value;
+    public int quantity;
     public Sprite icon;
+
+    public override bool Equals(object obj)
+    {
+        return obj is Item item &&
+               base.Equals(obj) &&
+               id == item.id;
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(base.GetHashCode(), id);
+    }
 }
