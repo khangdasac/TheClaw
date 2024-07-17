@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Battery
   m_EditorClassIdentifier: 
   id: 1
-  itemName: Battery
-  value: 1
+  itemName: Battery AA
+  quantity: 3
   icon: {fileID: 21300000, guid: 87390de463b8f5f4ca12c9ffa1fe80ae, type: 3}
