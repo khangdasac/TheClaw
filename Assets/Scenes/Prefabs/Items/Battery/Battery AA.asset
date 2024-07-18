@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e6b478f30a83724ea5e09b17a955121, type: 3}
-  m_Name: Valve
+  m_Name: Battery AA
   m_EditorClassIdentifier: 
-  id: 7
-  itemName: Valve
-  quantity: 1
-  icon: {fileID: 21300000, guid: 30588d7e47ed83540ba6aefca8de6fe0, type: 3}
+  id: 1
+  itemName: Battery AA
+  quantity: 3
+  icon: {fileID: 21300000, guid: 87390de463b8f5f4ca12c9ffa1fe80ae, type: 3}

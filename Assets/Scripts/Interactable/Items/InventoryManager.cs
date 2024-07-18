@@ -13,7 +13,11 @@ public class InventoryManager : MonoBehaviour
     public Transform itemContent;
     public GameObject inventoryItem;
 
+    [SerializeField]
+    private ExchangeDeskManager exchangeDeskManager;
+
     public static InventoryManager Instance { get => instance; set => instance = value; }
+    public ExchangeDeskManager ExchangeDeskManager { get => exchangeDeskManager; set => exchangeDeskManager = value; }
 
     private void Awake()
     {
@@ -35,7 +39,15 @@ public class InventoryManager : MonoBehaviour
 
     public void removeItem(Item item)
     {
-        items.Remove(item);
+        if (items.Contains(item))
+        {
+            if(item.quantity > 1)
+                item.quantity--;
+            else
+            {
+                items.Remove(item);
+            }
+        }
     }
 
     public void ListItems()
@@ -51,6 +63,7 @@ public class InventoryManager : MonoBehaviour
             var itemName = obj.transform.Find("ItemName").GetComponent<TextMeshProUGUI>();
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
             var quantity = obj.transform.Find("Quantity").GetComponent<TextMeshProUGUI>();
+            obj.GetComponent<ItemController>().Item = item;
 
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
@@ -60,4 +73,5 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
+
 }

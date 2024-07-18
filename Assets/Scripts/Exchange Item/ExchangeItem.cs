@@ -7,4 +7,11 @@ public class ExchangeItem : Item
 {
     public int maxQuantity;
 
+    public bool isEnough()
+    {
+        if(quantity >= maxQuantity )
+            return true;
+        else
+            return false;
+    }
 }
