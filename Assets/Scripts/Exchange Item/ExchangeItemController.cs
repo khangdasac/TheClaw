@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExchangeItemController : MonoBehaviour
+public class ExchangeItemController : ItemController
 {
-    private Item item;
-    public Item Item { get => item; set => item = value; }
+
 
     void Start()
     {
@@ -25,8 +24,7 @@ public class ExchangeItemController : MonoBehaviour
             
             if (InventoryManager.Instance.ExchangeDeskManager.removeItem(Item))
             {
-                Item inventoryItem = InventoryManager.Instance.ExchangeDeskManager.findInventoryItem(item.id);
-                InventoryManager.Instance.addItem(inventoryItem);
+                InventoryManager.Instance.addItem(Item);
 
                 InventoryManager.Instance.ListItems();
                 InventoryManager.Instance.ExchangeDeskManager.ListItems();

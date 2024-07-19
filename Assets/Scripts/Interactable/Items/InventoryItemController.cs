@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemController : MonoBehaviour
+public class InventoryItemController : ItemController
 {
-    private Item item;
-    public Item Item { get => item; set => item = value; }
-
-    
 
     void Start()
     {

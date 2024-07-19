@@ -11,7 +11,6 @@ public class ExchangeDeskManager : MonoBehaviour
     private bool isChange = false;
 
     public List<ExchangeItem> items = new List<ExchangeItem>();
-    public List<Item> inventoryItems = new List<Item>();
 
     public Transform itemContent;
     public GameObject inventoryItem;
@@ -115,15 +114,7 @@ public class ExchangeDeskManager : MonoBehaviour
         return null;
     }
 
-    public Item findInventoryItem(int id)
-    {
-        foreach (Item item in inventoryItems)
-        {
-            if (item.id == id)
-                return item;
-        }
-        return null;
-    }
+
 
     public void getReceivedItem()
     {

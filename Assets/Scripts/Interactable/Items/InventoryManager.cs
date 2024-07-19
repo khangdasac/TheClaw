@@ -1,6 +1,7 @@
  using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,8 @@ public class InventoryManager : MonoBehaviour
 {
     private static InventoryManager instance;
     public List<Item> items = new List<Item>();
+    public List<Item> inventoryItems = new List<Item>();
+
     public int maxItems = 30;
 
     public Transform itemContent;
@@ -24,8 +27,12 @@ public class InventoryManager : MonoBehaviour
         Instance = this;
     }
 
-    public void addItem(Item item)
+    public bool addItem(Item addItem)
     {
+        if (items.Count >= maxItems)
+            return false;
+
+        Item item = findInventoryItem(addItem.id);
         if (items.Contains(item))
         {
             item.quantity++;
@@ -35,10 +42,12 @@ public class InventoryManager : MonoBehaviour
             items.Add(item);
             item.quantity = 1;
         }
+        return true;
     }
 
-    public void removeItem(Item item)
+    public bool removeItem(Item removeItem)
     {
+        Item item = findInventoryItem(removeItem.id);
         if (items.Contains(item))
         {
             if(item.quantity > 1)
@@ -47,7 +56,9 @@ public class InventoryManager : MonoBehaviour
             {
                 items.Remove(item);
             }
+            return true;
         }
+        return false;
     }
 
     public void ListItems()
@@ -63,7 +74,7 @@ public class InventoryManager : MonoBehaviour
             var itemName = obj.transform.Find("ItemName").GetComponent<TextMeshProUGUI>();
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
             var quantity = obj.transform.Find("Quantity").GetComponent<TextMeshProUGUI>();
-            obj.GetComponent<ItemController>().Item = item;
+            obj.GetComponent<InventoryItemController>().Item = item;
 
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
@@ -74,4 +85,13 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    private Item findInventoryItem(int id)
+    {
+        foreach (Item item in inventoryItems)
+        {
+            if (item.id == id)
+                return item;
+        }
+        return null;
+    }
 }
