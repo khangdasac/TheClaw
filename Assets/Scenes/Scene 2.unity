@@ -1190,6 +1190,8 @@ MonoBehaviour:
   itemContent: {fileID: 1433575267}
   inventoryItem: {fileID: 8433225282598921382, guid: 6407ab95456cd7b4bb6a90be78122111, type: 3}
   exchangeDeskManager: {fileID: 930644134}
+  sfxAudioSource: {fileID: 176259170}
+  clickItemAudioClip: {fileID: 8300000, guid: a2f1ac6bc6ab8854daebb9f7312518cc, type: 3}
 --- !u!1 &151785864
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,7 +1326,6 @@ GameObject:
   m_Component:
   - component: {fileID: 176259171}
   - component: {fileID: 176259170}
-  - component: {fileID: 176259169}
   m_Layer: 0
   m_Name: SFX
   m_TagString: Untagged
@@ -1332,18 +1333,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &176259169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 176259168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1af2e8164017c0b44b4868a578f3a257, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &176259170
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10767,19 +10756,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4418919078669948869, guid: 0358064dd7c8e204b862088f1b0eb0ab, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4418919078669948869, guid: 0358064dd7c8e204b862088f1b0eb0ab, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4418919078669948869, guid: 0358064dd7c8e204b862088f1b0eb0ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 176259170}
     - target: {fileID: 4418919078669948869, guid: 0358064dd7c8e204b862088f1b0eb0ab, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4418919078669948869, guid: 0358064dd7c8e204b862088f1b0eb0ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayOneShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 4418919078669948869, guid: 0358064dd7c8e204b862088f1b0eb0ab, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: ExchangeItemController, Assembly-CSharp
+      value: UnityEngine.AudioSource, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4418919078669948869, guid: 0358064dd7c8e204b862088f1b0eb0ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.AudioClip, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6428783345043966111, guid: 0358064dd7c8e204b862088f1b0eb0ab, type: 3}
       propertyPath: m_Pivot.x

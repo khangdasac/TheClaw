@@ -19,6 +19,12 @@ public class InventoryManager : MonoBehaviour
     [SerializeField]
     private ExchangeDeskManager exchangeDeskManager;
 
+    [Header("Audio")]
+    [SerializeField]
+    private AudioSource sfxAudioSource;
+    [SerializeField]
+    private AudioClip clickItemAudioClip;
+
     public static InventoryManager Instance { get => instance; set => instance = value; }
     public ExchangeDeskManager ExchangeDeskManager { get => exchangeDeskManager; set => exchangeDeskManager = value; }
 
@@ -74,6 +80,10 @@ public class InventoryManager : MonoBehaviour
             var itemName = obj.transform.Find("ItemName").GetComponent<TextMeshProUGUI>();
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
             var quantity = obj.transform.Find("Quantity").GetComponent<TextMeshProUGUI>();
+            Button btn = obj.GetComponent<Button>();
+            Debug.Log(btn);
+            btn.onClick.AddListener(() => sfxAudioSource.PlayOneShot(clickItemAudioClip));
+
             obj.GetComponent<InventoryItemController>().Item = item;
 
             itemName.text = item.itemName;
@@ -94,4 +104,5 @@ public class InventoryManager : MonoBehaviour
         }
         return null;
     }
+
 }
