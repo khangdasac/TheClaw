@@ -385,6 +385,15 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ClosedExchangeScale"",
+                    ""type"": ""Button"",
+                    ""id"": ""07799272-096b-4c73-96a4-c2ac51d613a8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -816,6 +825,17 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
                     ""action"": ""ClosedBag"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1c02d797-90a5-48ce-8812-9188650d6bb5"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ClosedExchangeScale"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -843,6 +863,7 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        m_UI_ClosedExchangeScale = m_UI.FindAction("ClosedExchangeScale", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1001,6 +1022,7 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
     private readonly InputAction m_UI_RightClick;
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
+    private readonly InputAction m_UI_ClosedExchangeScale;
     public struct UIActions
     {
         private @PlayerInputController m_Wrapper;
@@ -1016,6 +1038,7 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
         public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
         public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
+        public InputAction @ClosedExchangeScale => m_Wrapper.m_UI_ClosedExchangeScale;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1058,6 +1081,9 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
             @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
+            @ClosedExchangeScale.started += instance.OnClosedExchangeScale;
+            @ClosedExchangeScale.performed += instance.OnClosedExchangeScale;
+            @ClosedExchangeScale.canceled += instance.OnClosedExchangeScale;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -1095,6 +1121,9 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
             @TrackedDeviceOrientation.started -= instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.performed -= instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.canceled -= instance.OnTrackedDeviceOrientation;
+            @ClosedExchangeScale.started -= instance.OnClosedExchangeScale;
+            @ClosedExchangeScale.performed -= instance.OnClosedExchangeScale;
+            @ClosedExchangeScale.canceled -= instance.OnClosedExchangeScale;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -1134,5 +1163,6 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+        void OnClosedExchangeScale(InputAction.CallbackContext context);
     }
 }

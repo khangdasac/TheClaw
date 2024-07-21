@@ -81,8 +81,8 @@ public class InventoryManager : MonoBehaviour
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
             var quantity = obj.transform.Find("Quantity").GetComponent<TextMeshProUGUI>();
             Button btn = obj.GetComponent<Button>();
-            Debug.Log(btn);
-            btn.onClick.AddListener(() => sfxAudioSource.PlayOneShot(clickItemAudioClip));
+
+            btn?.onClick.AddListener(() => sfxAudioSource.PlayOneShot(clickItemAudioClip));
 
             obj.GetComponent<InventoryItemController>().Item = item;
 
@@ -103,6 +103,11 @@ public class InventoryManager : MonoBehaviour
                 return item;
         }
         return null;
+    }
+
+    public void SetActive(bool value)
+    {
+        gameObject.SetActive(value);
     }
 
 }

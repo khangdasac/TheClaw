@@ -363,6 +363,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ClosedExchangeScale",
+                    "type": "Button",
+                    "id": "07799272-096b-4c73-96a4-c2ac51d613a8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -792,6 +801,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ClosedBag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1c02d797-90a5-48ce-8812-9188650d6bb5",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ClosedExchangeScale",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

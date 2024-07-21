@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerUI : MonoBehaviour
@@ -8,10 +9,11 @@ public class PlayerUI : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField]
     private TextMeshProUGUI promptText;
-    [SerializeField]
-    private GameObject bagUI;
+
     [SerializeField]
     private InputManager inputManager;
+
+
     void Start()
     {
         
@@ -30,18 +32,21 @@ public class PlayerUI : MonoBehaviour
 
     public void OpenBag()
     {
-        bagUI.SetActive(true);
+        InventoryManager.Instance.SetActive(true);
         inputManager.SwitchActionMap("UI");
     }
 
     public void CloseBag()
     {
-        bagUI.SetActive(false);
+        InventoryManager.Instance.SetActive(false);
         inputManager.SwitchActionMap("OnFoot");
+
+        
     }
 
-    public void click()
+    public void CloseExchangeScale() 
     {
-        Debug.Log("Hello");
+        if (InventoryManager.Instance.ExchangeDeskManager != null)
+            InventoryManager.Instance.ExchangeDeskManager.SetActive(false);
     }
 }

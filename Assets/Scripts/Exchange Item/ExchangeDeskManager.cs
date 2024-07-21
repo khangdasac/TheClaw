@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ExchangeDeskManager : MonoBehaviour
 {
-    private static ExchangeDeskManager instance;
+
     private bool isOpen;
     private bool isChange = false;
 
@@ -21,7 +21,11 @@ public class ExchangeDeskManager : MonoBehaviour
 
     public Item receivedItem;
 
-    public static ExchangeDeskManager Instance { get => instance;}
+    [Header("Audio")]
+    [SerializeField]
+    private AudioSource sfxAudioSource;
+    [SerializeField]
+    private AudioClip clickItemAudioClip;
 
     void Start()
     {
@@ -88,6 +92,10 @@ public class ExchangeDeskManager : MonoBehaviour
             GameObject enough = obj.transform.Find("Enough").GetComponent<GameObject>();
             obj.GetComponent<ExchangeItemController>().Item = item;
 
+            Button btn = obj.GetComponent<Button>();
+
+            btn?.onClick.AddListener(() => sfxAudioSource.PlayOneShot(clickItemAudioClip));
+
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
             if (item.quantity > 1)
@@ -114,8 +122,6 @@ public class ExchangeDeskManager : MonoBehaviour
         return null;
     }
 
-
-
     public void getReceivedItem()
     {
         foreach (ExchangeItem item in items)
@@ -130,5 +136,10 @@ public class ExchangeDeskManager : MonoBehaviour
         InventoryManager.Instance.ListItems();
 
         isChange = true;
+    }
+
+    public void SetActive(bool value)
+    {
+        gameObject.SetActive(value);
     }
 }

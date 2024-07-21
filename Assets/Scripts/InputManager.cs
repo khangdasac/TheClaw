@@ -25,8 +25,16 @@ public class InputManager : MonoBehaviour
         playerLook = GetComponent<PlayerLook>();
         playerUI = GetComponent<PlayerUI>();
         onFoot.Jump.performed += ctx => playerMotor.Jump();
+
+
         UI.ClosedBag.performed += ctx => playerUI.CloseBag();
+        UI.ClosedBag.performed += ctx => playerUI.CloseExchangeScale();
+
+
         onFoot.OpenBag.performed += ctx => playerUI.OpenBag();
+
+        UI.ClosedExchangeScale.performed += ctx => playerUI.CloseBag();
+        UI.ClosedExchangeScale.performed += ctx => playerUI.CloseExchangeScale(); 
     }
 
     // Update is called once per frame
