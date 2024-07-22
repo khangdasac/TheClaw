@@ -4,28 +4,19 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ExchangeDeskManager : MonoBehaviour
+public class ExchangeDeskManager : ItemsManager
 {
 
     private bool isOpen;
     private bool isChange = false;
 
-    public List<ExchangeItem> items = new List<ExchangeItem>();
-
-    public Transform itemContent;
-    public GameObject inventoryItem;
     public GameObject inventoryItemEmpty;
-
     public GameObject objReceivedItem;
+
     public bool isEnough;
 
     public Item receivedItem;
 
-    [Header("Audio")]
-    [SerializeField]
-    private AudioSource sfxAudioSource;
-    [SerializeField]
-    private AudioClip clickItemAudioClip;
 
     void Start()
     {
@@ -38,9 +29,9 @@ public class ExchangeDeskManager : MonoBehaviour
         
     }
 
-    public bool addItem(Item item)
+    public override bool addItem(Item item)
     {
-        ExchangeItem exchangeItem = findItem(item.id);
+        ExchangeItem exchangeItem = (ExchangeItem)findItem(item.id);
 
         if (items.Contains(exchangeItem) && exchangeItem.quantity < exchangeItem.maxQuantity)
         {
@@ -50,22 +41,21 @@ public class ExchangeDeskManager : MonoBehaviour
         return false;
     }
 
-    public bool removeItem(Item item)
+    public override bool removeItem(Item item)
     {
-        ExchangeItem exchangeItem = findItem(item.id);
+        ExchangeItem exchangeItem = (ExchangeItem)findItem(item.id);
         if (items.Contains(exchangeItem))
         {
             if(exchangeItem.quantity > 0)
             {
                 exchangeItem.quantity--;
-                Debug.Log(exchangeItem.quantity);
                 return true;
             }
         }
         return false;
     }
 
-    public void ListItems()
+    public override void ListItems()
     {
         foreach (Transform item in itemContent)
         {
@@ -112,16 +102,6 @@ public class ExchangeDeskManager : MonoBehaviour
 
     }
 
-    private ExchangeItem findItem(int id)
-    {
-        foreach(ExchangeItem item in items)
-        {
-            if (item.id == id)
-                return item;
-        }
-        return null;
-    }
-
     public void getReceivedItem()
     {
         foreach (ExchangeItem item in items)
@@ -138,8 +118,4 @@ public class ExchangeDeskManager : MonoBehaviour
         isChange = true;
     }
 
-    public void SetActive(bool value)
-    {
-        gameObject.SetActive(value);
-    }
 }

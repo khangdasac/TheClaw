@@ -1174,24 +1174,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0465cf88b38fbaf46b446b21c0156142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
-  inventoryItems:
+  items:
   - {fileID: 11400000, guid: b64004dcbd760c94697605c10beaa1c6, type: 2}
   - {fileID: 11400000, guid: e6353b2ca0128d64096a1973819325bb, type: 2}
   - {fileID: 11400000, guid: 91000fb77eed230498c679495e0854e0, type: 2}
-  - {fileID: 11400000, guid: 910a0044f4d4696408230567a53c73b3, type: 2}
   - {fileID: 11400000, guid: d21598b35fc073040811917b1306a703, type: 2}
+  - {fileID: 11400000, guid: 910a0044f4d4696408230567a53c73b3, type: 2}
   - {fileID: 11400000, guid: 84789be772c7fe64b93a93ac91ea7ff1, type: 2}
   - {fileID: 11400000, guid: 59e769ccb36217943883f22402eb526a, type: 2}
   - {fileID: 11400000, guid: 52ac9f77e90bfce4583c84cbf2cc275b, type: 2}
   - {fileID: 11400000, guid: c7416229b5506674795b5cffddd9dc07, type: 2}
   - {fileID: 11400000, guid: 17e45c4d60452e34ebf302854c6c39ba, type: 2}
-  maxItems: 30
   itemContent: {fileID: 1433575267}
   inventoryItem: {fileID: 8433225282598921382, guid: 6407ab95456cd7b4bb6a90be78122111, type: 3}
-  exchangeDeskManager: {fileID: 0}
   sfxAudioSource: {fileID: 176259170}
   clickItemAudioClip: {fileID: 8300000, guid: a2f1ac6bc6ab8854daebb9f7312518cc, type: 3}
+  maxItems: 30
+  exchangeDeskManager: {fileID: 0}
 --- !u!1 &151785864
 GameObject:
   m_ObjectHideFlags: 0
@@ -5809,12 +5808,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ea6e517bffd40c94fbe4b24189240fbb, type: 2}
   itemContent: {fileID: 89091866}
   inventoryItem: {fileID: 1889217956046498169, guid: 0358064dd7c8e204b862088f1b0eb0ab, type: 3}
+  sfxAudioSource: {fileID: 176259170}
+  clickItemAudioClip: {fileID: 8300000, guid: a2f1ac6bc6ab8854daebb9f7312518cc, type: 3}
   inventoryItemEmpty: {fileID: 4885339864058216456, guid: 1d2fd474bf6b6b342bd45ad4b53dc8f6, type: 3}
   objReceivedItem: {fileID: 1412423609}
   isEnough: 0
   receivedItem: {fileID: 11400000, guid: 910a0044f4d4696408230567a53c73b3, type: 2}
-  sfxAudioSource: {fileID: 176259170}
-  clickItemAudioClip: {fileID: 8300000, guid: a2f1ac6bc6ab8854daebb9f7312518cc, type: 3}
 --- !u!1001 &942274806
 PrefabInstance:
   m_ObjectHideFlags: 0
