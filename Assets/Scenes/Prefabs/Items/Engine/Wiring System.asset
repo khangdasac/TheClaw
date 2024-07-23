@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 101
   itemName: Wiring System
-  quantity: 1
+  quantity: 0
   icon: {fileID: 21300000, guid: 776827b279144354994bf927007cfd06, type: 3}

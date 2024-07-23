@@ -8,6 +8,7 @@ public class Keypad : Interactable
     [SerializeField]
     private GameObject door;
     private bool isOpenDoor;
+
     void Start()
     {
         
@@ -16,11 +17,27 @@ public class Keypad : Interactable
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     protected override void Interact()
     {
-        isOpenDoor = !isOpenDoor;
-        door.GetComponent<Animator>().SetBool("isOpen", isOpenDoor);
+        if (EngineTable.Instance.isEnough)
+        {
+            isOpenDoor = !isOpenDoor;
+            door.GetComponent<Animator>().SetBool("isOpen", isOpenDoor);
+        }
+    }
+
+    public void UpdateStateKeypad(bool value)
+    {
+        if(value)
+        {
+            promptMessage = "Press E to use keypad";
+        }
+        else
+        {
+            promptMessage = "The keypad can't be activated when the system doesn't have enough components";
+
+        }
     }
 }

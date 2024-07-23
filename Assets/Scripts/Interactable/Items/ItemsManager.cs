@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal.VersionControl;
@@ -19,8 +20,11 @@ public abstract class ItemsManager : MonoBehaviour
     protected AudioClip clickItemAudioClip;
 
     public abstract bool addItem(Item item);
+
     public abstract bool removeItem(Item item);
+
     public abstract void ListItems();
+
     public void SetActive(bool value)
     {
         gameObject.SetActive(value);
@@ -33,6 +37,10 @@ public abstract class ItemsManager : MonoBehaviour
                 return item;
         }
         return null;
+    }
+
+    void Update()
+    {
     }
 
 }

@@ -40,13 +40,14 @@ public class PlayerUI : MonoBehaviour
     {
         InventoryManager.Instance.SetActive(false);
         inputManager.SwitchActionMap("OnFoot");
-
-        
     }
 
     public void CloseExchangeScale() 
     {
         if (InventoryManager.Instance.ExchangeDeskManager != null)
+        {
             InventoryManager.Instance.ExchangeDeskManager.SetActive(false);
+            InventoryManager.Instance.ExchangeDeskManager = null;
+        }
     }
 }

@@ -1,4 +1,4 @@
- using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEditorInternal.Profiling.Memory.Experimental;
@@ -7,7 +7,9 @@ using UnityEngine.UI;
 
 public class InventoryManager : ItemsManager
 {
-    private static InventoryManager instance;
+    [SerializeField]
+    public static InventoryManager instance;    
+
 
     public int maxItems = 30;
 
@@ -17,9 +19,14 @@ public class InventoryManager : ItemsManager
     public static InventoryManager Instance { get => instance; set => instance = value; }
     public ExchangeDeskManager ExchangeDeskManager { get => exchangeDeskManager; set => exchangeDeskManager = value; }
 
-    private void Awake()
+    void Start()
     {
         Instance = this;
+        SetActive(false);
+    }
+
+    private void Awake()
+    {
         ListItems();
     }
 
@@ -43,7 +50,7 @@ public class InventoryManager : ItemsManager
         Item item = findItem(removeItem.id);
         if (items.Contains(item))
         {
-            if(item.quantity > 0)
+            if (item.quantity > 0)
             {
                 item.quantity--;
                 return true;
@@ -62,7 +69,7 @@ public class InventoryManager : ItemsManager
         foreach (Item item in items)
         {
 
-            if(item.quantity <= 0)
+            if (item.quantity <= 0)
             {
                 continue;
             }
@@ -79,7 +86,7 @@ public class InventoryManager : ItemsManager
 
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
-            if(item.quantity > 1)
+            if (item.quantity > 1)
             {
                 quantity.text = item.quantity.ToString();
             }

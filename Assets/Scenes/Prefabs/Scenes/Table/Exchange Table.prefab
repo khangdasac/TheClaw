@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3290781640138317786}
   - component: {fileID: 5035518156937745966}
   - component: {fileID: 7377032484031705991}
-  - component: {fileID: 2616937193314852504}
   m_Layer: 0
   m_Name: Exchange Table
   m_TagString: Untagged
@@ -35,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 1716201187732551007}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9100383347574645691
 MeshFilter:
@@ -136,40 +135,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -4503108318805675619, guid: ba4814c9dfefa9048956dc798c383fbd, type: 3}
---- !u!114 &2616937193314852504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4344687015182707848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6df0017fec6ca4d4c97045d46eb7c26d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debrisPrefabs:
-  - name: Low
-    prefab: {fileID: 8879241918667561070, guid: 1f275e3228a10c945acd009ff4d8a58d, type: 3}
-  - name: Medium
-    prefab: {fileID: 888867936296107127, guid: 50df18fd0116378458f387c9040da114, type: 3}
-  - name: High
-    prefab: {fileID: 202992314370579293, guid: 7af0a0981df276a4a9bdeee641c7f806, type: 3}
-  debrisAmount: 0
-  forceRequired: 5
-  despawnType: 0
-  despawnPercentage: 100
-  despawnTime: 30
-  player: {fileID: 0}
-  distanceFromPlayer: 50
-  audioClips:
-  - {fileID: 8300000, guid: 7eb48b1ee23012b48a2d6530e6d0ab30, type: 3}
-  - {fileID: 8300000, guid: dc7724320e7f5a34d994515d42ac1cb9, type: 3}
-  - {fileID: 8300000, guid: 9c9202f6f00d04c489a7eab8d91cc942, type: 3}
-  - {fileID: 8300000, guid: 43119588cb2c1da4dbbb021a1151f9dd, type: 3}
-  volume: 1
-  volumeVariation: 0.1
-  pitchVariation: 0.25
 --- !u!1001 &1716201187732156381
 PrefabInstance:
   m_ObjectHideFlags: 0

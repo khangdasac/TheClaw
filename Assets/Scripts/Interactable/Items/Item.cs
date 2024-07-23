@@ -22,4 +22,21 @@ public class Item : ScriptableObject
     {
         return HashCode.Combine(base.GetHashCode(), id);
     }
+
+    public Item(int id)
+    {
+        this.id = id;
+    }
+
+    public Item(int id, string itemName, int quantity, Sprite icon) : this(id)
+    {
+        this.itemName = itemName;
+        this.quantity = quantity;
+        this.icon = icon;
+    }
+
+    public Item()
+    {
+
+    }
 }

@@ -10,7 +10,7 @@ public class SFXVolumeManager : MonoBehaviour
     public SFXVolumeManager Instance { get => this; set => instance = value; }
     public AudioSource AudioSource 
     { 
-        get => 
+        get =>
             audioSource != null ? audioSource : GetComponent<AudioSource>();
 
         set => audioSource = value; 

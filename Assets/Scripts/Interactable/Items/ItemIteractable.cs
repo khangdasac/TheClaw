@@ -10,5 +10,6 @@ public class ItemIteractable : Interactable
         Destroy(gameObject);
         InventoryManager.Instance.addItem(item);
         InventoryManager.Instance.ListItems();
+        Debug.Log(InventoryManager.Instance);
     }
 }
