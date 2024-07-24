@@ -48,8 +48,9 @@ public class InputManager : MonoBehaviour
 
         playerMotor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
 
-        
-        
+        playerMotor.footStepSound(onFoot.Movement.ReadValue<Vector2>());
+
+
     }
 
     private void LateUpdate()
