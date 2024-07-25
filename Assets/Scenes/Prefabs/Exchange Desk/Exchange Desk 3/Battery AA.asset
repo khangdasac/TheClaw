@@ -16,4 +16,4 @@ MonoBehaviour:
   itemName: Battery AA
   quantity: 0
   icon: {fileID: 21300000, guid: 87390de463b8f5f4ca12c9ffa1fe80ae, type: 3}
-  maxQuantity: 10
+  maxQuantity: 12

@@ -35,16 +35,21 @@ public class InputManager : MonoBehaviour
 
         UI.ClosedExchangeScale.performed += ctx => playerUI.CloseBag();
         UI.ClosedExchangeScale.performed += ctx => playerUI.CloseExchangeScale(); 
+
+        
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(onFoot.SpeedUp.IsPressed())
+        if(onFoot.LowerDown.IsPressed())
+            playerMotor.speed = playerMotor.lowSpeed;
+        else if (onFoot.SpeedUp.IsPressed())
             playerMotor.speed = playerMotor.highSpeed;
         else
             playerMotor.speed = playerMotor.normalSpeed;
-        
+
+        playerLook.isLowerDown = onFoot.LowerDown.IsPressed();
 
         playerMotor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
 

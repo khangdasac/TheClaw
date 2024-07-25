@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6a091df8aa1e394aa3c6d6187c37c8b, type: 3}
-  m_Name: Battery AA
+  m_Script: {fileID: 11500000, guid: 0e6b478f30a83724ea5e09b17a955121, type: 3}
+  m_Name: Yellow Gem
   m_EditorClassIdentifier: 
-  id: 1
-  itemName: Battery AA
+  id: 10
+  itemName: Yellow Gem
   quantity: 0
-  icon: {fileID: 21300000, guid: 87390de463b8f5f4ca12c9ffa1fe80ae, type: 3}
-  maxQuantity: 10
+  icon: {fileID: 21300000, guid: 6efb40e1ed6cec34eb6df35393278402, type: 3}

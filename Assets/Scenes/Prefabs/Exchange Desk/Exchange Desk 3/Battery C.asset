@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6a091df8aa1e394aa3c6d6187c37c8b, type: 3}
-  m_Name: Battery AA
+  m_Name: Battery C
   m_EditorClassIdentifier: 
-  id: 1
-  itemName: Battery AA
+  id: 8
+  itemName: Battery C
   quantity: 0
-  icon: {fileID: 21300000, guid: 87390de463b8f5f4ca12c9ffa1fe80ae, type: 3}
-  maxQuantity: 10
+  icon: {fileID: 21300000, guid: 60c5e78db9f2d5847b909fb9bbbdfc16, type: 3}
+  maxQuantity: 8

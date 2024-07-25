@@ -20,7 +20,7 @@ public class PlayerMotor : MonoBehaviour
     public float gavity = -9.8f;
 
     [Header("Animator")]
-    public PlayerAnimator playerAnimator;
+    public Animator playerAnimator;
     // Start is called before the first frame update
     [Header("Audio")]
     private AudioSource playerAudioSource;
@@ -30,7 +30,6 @@ public class PlayerMotor : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        playerAnimator = GetComponent<PlayerAnimator>();
         playerAudioSource = GetComponent<AudioSource>();
     }
 
@@ -94,7 +93,10 @@ public class PlayerMotor : MonoBehaviour
         else if (speed == highSpeed)
         {
             stepCycle = 0.3f;
-
+        }
+        else if(speed == lowSpeed)
+        {
+            stepCycle = 0.8f;
         }
 
         if (!move.Equals(Vector3.zero))

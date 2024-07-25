@@ -80,6 +80,15 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LowerDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""707a4d49-9ea3-4eb8-af31-e147e60add24"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -278,6 +287,17 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""OpenBag"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2c19b3ed-3788-444e-b483-6c7b5a35f6f7"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LowerDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -850,6 +870,7 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
         m_OnFoot_Look = m_OnFoot.FindAction("Look", throwIfNotFound: true);
         m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
         m_OnFoot_SpeedUp = m_OnFoot.FindAction("SpeedUp", throwIfNotFound: true);
+        m_OnFoot_LowerDown = m_OnFoot.FindAction("LowerDown", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -931,6 +952,7 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
     private readonly InputAction m_OnFoot_Look;
     private readonly InputAction m_OnFoot_Interact;
     private readonly InputAction m_OnFoot_SpeedUp;
+    private readonly InputAction m_OnFoot_LowerDown;
     public struct OnFootActions
     {
         private @PlayerInputController m_Wrapper;
@@ -941,6 +963,7 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
         public InputAction @Look => m_Wrapper.m_OnFoot_Look;
         public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
         public InputAction @SpeedUp => m_Wrapper.m_OnFoot_SpeedUp;
+        public InputAction @LowerDown => m_Wrapper.m_OnFoot_LowerDown;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -968,6 +991,9 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
             @SpeedUp.started += instance.OnSpeedUp;
             @SpeedUp.performed += instance.OnSpeedUp;
             @SpeedUp.canceled += instance.OnSpeedUp;
+            @LowerDown.started += instance.OnLowerDown;
+            @LowerDown.performed += instance.OnLowerDown;
+            @LowerDown.canceled += instance.OnLowerDown;
         }
 
         private void UnregisterCallbacks(IOnFootActions instance)
@@ -990,6 +1016,9 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
             @SpeedUp.started -= instance.OnSpeedUp;
             @SpeedUp.performed -= instance.OnSpeedUp;
             @SpeedUp.canceled -= instance.OnSpeedUp;
+            @LowerDown.started -= instance.OnLowerDown;
+            @LowerDown.performed -= instance.OnLowerDown;
+            @LowerDown.canceled -= instance.OnLowerDown;
         }
 
         public void RemoveCallbacks(IOnFootActions instance)
@@ -1149,6 +1178,7 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
         void OnLook(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnSpeedUp(InputAction.CallbackContext context);
+        void OnLowerDown(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

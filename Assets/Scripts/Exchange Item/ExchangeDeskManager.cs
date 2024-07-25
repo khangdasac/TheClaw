@@ -7,9 +7,6 @@ using UnityEngine.UI;
 public class ExchangeDeskManager : ItemsManager
 {
 
-    private bool isOpen;
-    private bool isChange = false;
-
     public GameObject inventoryItemEmpty;
     public GameObject objReceivedItem;
 
@@ -115,7 +112,6 @@ public class ExchangeDeskManager : ItemsManager
         InventoryManager.Instance.addItem(receivedItem);
         InventoryManager.Instance.ListItems();
 
-        isChange = true;
     }
 
 }
