@@ -8,6 +8,7 @@ public class PlayerMotor : MonoBehaviour
     public CharacterController controller;
     private Vector3 playerVelocity;
     private bool isGrounded;
+    private bool isGrounding;
 
     [Header("Player's parameters")]
     public float speed = 10f;
@@ -25,8 +26,11 @@ public class PlayerMotor : MonoBehaviour
     [Header("Audio")]
     private AudioSource playerAudioSource;
     public AudioClip footStepClip;
+    public AudioClip groundingClip;
     private float deltaTime;
     private float stepCycle;
+
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -37,7 +41,7 @@ public class PlayerMotor : MonoBehaviour
     void Update()
     {
         isGrounded = controller.isGrounded;
-
+        Grounding();
     }
 
     public void ProcessMove(Vector3 move)
@@ -79,8 +83,18 @@ public class PlayerMotor : MonoBehaviour
     {
         if (isGrounded)
         {
+            isGrounding = true;
             playerAnimator.SetTrigger("isJump");
             playerVelocity.y = Mathf.Sqrt(-2.0f * jumpHeight * gavity);
+        }
+    }
+
+    public void Grounding()
+    {
+        if (isGrounding && isGrounded && playerVelocity.y < 0)
+        {
+            playerAudioSource.PlayOneShot(groundingClip);
+            isGrounding = false;    
         }
     }
 
@@ -99,7 +113,7 @@ public class PlayerMotor : MonoBehaviour
             stepCycle = 0.8f;
         }
 
-        if (!move.Equals(Vector3.zero))
+        if (!move.Equals(Vector3.zero) && isGrounded)
         {
             deltaTime += Time.deltaTime;
             if (deltaTime > stepCycle)
