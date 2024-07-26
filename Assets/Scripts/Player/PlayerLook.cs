@@ -31,7 +31,7 @@ public class PlayerLook : MonoBehaviour
 
     private void Update()
     {
-        standUpPositon = transform.position + Vector3.up * 5.1f;
+        standUpPositon = transform.position + Vector3.up * 5.3f;
         lowerDownPositon = transform.position + Vector3.up * 3.9f;
         if (isLowerDown)
         {
@@ -47,13 +47,13 @@ public class PlayerLook : MonoBehaviour
     {
         if(isLowerDown)
             if(Vector3.Distance(camera.transform.position, lowerDownPositon) > 0.01f)
-                camera.transform.position = Vector3.MoveTowards(camera.transform.position, lowerDownPositon, 0.02f);
+                camera.transform.position = Vector3.MoveTowards(camera.transform.position, lowerDownPositon, 0.035f);
     }
 
     public void StandUp()
     {
         if(!isLowerDown)
             if (Vector3.Distance(camera.transform.position, standUpPositon) > 0.01f)
-                camera.transform.position = Vector3.MoveTowards(camera.transform.position, standUpPositon, 0.02f);
+                camera.transform.position = Vector3.MoveTowards(camera.transform.position, standUpPositon, 0.035f);
     }
 }

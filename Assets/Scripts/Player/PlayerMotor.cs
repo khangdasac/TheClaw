@@ -122,6 +122,10 @@ public class PlayerMotor : MonoBehaviour
                 deltaTime = 0;
             }
         }
+        else
+        {
+            deltaTime = 0;
+        }
     }
 
 }
