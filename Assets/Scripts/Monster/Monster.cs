@@ -9,7 +9,7 @@ public class Monster : MonoBehaviour
     private NavMeshAgent agent;
     private GameObject player;
     public NavMeshAgent Agent { get => agent; }
-    public GameObject Player { get => player;}
+    public GameObject Player { get => player; }
 
     public Path path;
 
@@ -29,6 +29,10 @@ public class Monster : MonoBehaviour
     public Animator animator;
     public NavMeshAgent navMeshAgent;
 
+    [Header("Footstep")]
+    public AudioClip monsterFootStep;
+    private AudioSource monsterAudioSource;
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +41,7 @@ public class Monster : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         stateMachine.Initialise();
         player = GameObject.FindGameObjectWithTag("Player");
-        
+        monsterAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -49,7 +53,7 @@ public class Monster : MonoBehaviour
 
     public bool CanSeePlayer()
     {
-        if(Player != null)
+        if (Player != null)
         {
 
             if (Vector3.Distance(transform.position, Player.transform.position + Vector3.up * 2f) < sightDistance)
@@ -59,18 +63,18 @@ public class Monster : MonoBehaviour
                 float angelToPlayer = Vector3.Angle(targetDirection, transform.forward);
 
 
-                if (angelToPlayer >= - fieldOfView && angelToPlayer <= fieldOfView) 
+                if (angelToPlayer >= -fieldOfView && angelToPlayer <= fieldOfView)
                 {
 
                     Ray ray = new Ray(transform.position + Vector3.up * eyeHeight, targetDirection);
                     RaycastHit hitInfo = new RaycastHit();
                     Debug.DrawRay(ray.origin, ray.direction * sightDistance);
 
-                    if (Physics.Raycast(ray,out hitInfo, sightDistance))
+                    if (Physics.Raycast(ray, out hitInfo, sightDistance))
                     {
-                        if(hitInfo.transform.gameObject == Player)
+                        if (hitInfo.transform.gameObject == Player)
                         {
-                            Debug.Log("Monster seen player");
+                            //Debug.Log("Monster seen player");
 
                             return true;
                         }
@@ -78,8 +82,17 @@ public class Monster : MonoBehaviour
                 }
             }
         }
-        Debug.Log("Monster don't see player");
+        //Debug.Log("Monster don't see player");
 
         return false;
+    }
+
+    public void PlayFootStep()
+    {
+        float distance = Vector3.Distance(transform.position, Player.transform.position + Vector3.up * 2f);
+        float volumeScale = distance < 5 ? 1 : (distance < 80 ? 5/distance : 0);
+        monsterAudioSource.PlayOneShot(monsterFootStep, volumeScale);
+        Debug.Log("Khoảng cách là: " + distance);
+        Debug.Log("Âm thanh là: " + volumeScale);
     }
 }
