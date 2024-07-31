@@ -93,12 +93,12 @@ public class PlayerMotor : MonoBehaviour
     {
         if (isGrounding && isGrounded && playerVelocity.y < 0)
         {
-            playerAudioSource.PlayOneShot(groundingClip);
+            playerAudioSource.PlayOneShot(groundingClip, 0.2f);
             isGrounding = false;    
         }
     }
 
-    public void footStepSound(Vector3 move)
+    public void FootStepSound(Vector3 move)
     {
         if (speed == normalSpeed)
         {
@@ -118,7 +118,7 @@ public class PlayerMotor : MonoBehaviour
             deltaTime += Time.deltaTime;
             if (deltaTime > stepCycle)
             {
-                playerAudioSource.PlayOneShot(footStepClip);
+                playerAudioSource.PlayOneShot(footStepClip, 0.2f);
                 deltaTime = 0;
             }
         }
@@ -127,5 +127,7 @@ public class PlayerMotor : MonoBehaviour
             deltaTime = 0;
         }
     }
+
+
 
 }

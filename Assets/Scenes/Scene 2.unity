@@ -36881,6 +36881,7 @@ MonoBehaviour:
   animator: {fileID: 2099343002}
   navMeshAgent: {fileID: 2099342994}
   monsterFootStep: {fileID: 8300000, guid: 18eee6556c6c154478e62ec2bb593f49, type: 3}
+  monsterShoutClip: {fileID: 8300000, guid: 1fb17463e1b57c7459ac19f8277b4917, type: 3}
 --- !u!136 &2099343000
 CapsuleCollider:
   m_ObjectHideFlags: 0

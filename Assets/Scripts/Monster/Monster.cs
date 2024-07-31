@@ -33,6 +33,9 @@ public class Monster : MonoBehaviour
     public AudioClip monsterFootStep;
     private AudioSource monsterAudioSource;
 
+    [Header("Shout")]
+    public AudioClip monsterShoutClip;
+
 
     // Start is called before the first frame update
     void Start()
@@ -75,7 +78,7 @@ public class Monster : MonoBehaviour
                         if (hitInfo.transform.gameObject == Player)
                         {
                             //Debug.Log("Monster seen player");
-
+                            //monsterAudioSource.PlayOneShot(monsterShoutClip, 0.2f);
                             return true;
                         }
                     }
