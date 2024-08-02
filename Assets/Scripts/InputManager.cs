@@ -11,9 +11,13 @@ public class InputManager : MonoBehaviour
     private PlayerInputController playerInputController;
     public PlayerInputController.OnFootActions onFoot;
     public PlayerInputController.UIActions UI;
+    public PlayerInputController.PauseMenuActions pause;
+
     private PlayerMotor playerMotor;
     private PlayerLook playerLook;
     private PlayerUI playerUI;
+
+    public PauseMenu pauseMenu;
 
     // Start is called before the first frame update
     void Awake()
@@ -21,6 +25,7 @@ public class InputManager : MonoBehaviour
         playerInputController = new PlayerInputController();
         onFoot = playerInputController.OnFoot;
         UI = playerInputController.UI;
+        pause = playerInputController.PauseMenu;
         playerMotor = GetComponent<PlayerMotor>();
         playerLook = GetComponent<PlayerLook>();
         playerUI = GetComponent<PlayerUI>();
@@ -34,9 +39,12 @@ public class InputManager : MonoBehaviour
         onFoot.OpenBag.performed += ctx => playerUI.OpenBag();
 
         UI.ClosedExchangeScale.performed += ctx => playerUI.CloseBag();
-        UI.ClosedExchangeScale.performed += ctx => playerUI.CloseExchangeScale(); 
+        UI.ClosedExchangeScale.performed += ctx => playerUI.CloseExchangeScale();
 
-        
+        onFoot.Pause.performed += ctx => pauseMenu.ActivePauseMenu();
+        UI.Pause.performed += ctx => pauseMenu.ActivePauseMenu();
+        pause.Continue.performed += ctx => pauseMenu.Continue();
+
     }
 
     // Update is called once per frame
@@ -86,6 +94,11 @@ public class InputManager : MonoBehaviour
         {
             playerInputController.Disable();
             UI.Enable();
+        }
+        else if (actionMap.Equals("PauseMenu"))
+        {
+            playerInputController.Disable();
+            pause.Enable();
         }
     }
 

@@ -89,6 +89,15 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""5a99df18-6c41-4da5-89e5-21455099ef5a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -300,6 +309,17 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
                     ""action"": ""LowerDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ce961bd5-d50c-40f0-aeb3-68667ac2170c"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -410,6 +430,15 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
                     ""name"": ""ClosedExchangeScale"",
                     ""type"": ""Button"",
                     ""id"": ""07799272-096b-4c73-96a4-c2ac51d613a8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""08374d93-a10d-422e-bf14-c50bb4a8c4e5"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -856,6 +885,45 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
                     ""action"": ""ClosedExchangeScale"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8932925b-31f2-4c9e-807a-dfc0488953ff"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""PauseMenu"",
+            ""id"": ""70126f98-a9fa-426f-ba2c-5cab6df9f236"",
+            ""actions"": [
+                {
+                    ""name"": ""Continue"",
+                    ""type"": ""Button"",
+                    ""id"": ""47af4cad-6c73-4f37-aa99-3fe1edb13fc5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""4c1bb10b-efe1-4e7a-a08c-9855c99d1799"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Continue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -871,6 +939,7 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
         m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
         m_OnFoot_SpeedUp = m_OnFoot.FindAction("SpeedUp", throwIfNotFound: true);
         m_OnFoot_LowerDown = m_OnFoot.FindAction("LowerDown", throwIfNotFound: true);
+        m_OnFoot_Pause = m_OnFoot.FindAction("Pause", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -885,6 +954,10 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         m_UI_ClosedExchangeScale = m_UI.FindAction("ClosedExchangeScale", throwIfNotFound: true);
+        m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
+        // PauseMenu
+        m_PauseMenu = asset.FindActionMap("PauseMenu", throwIfNotFound: true);
+        m_PauseMenu_Continue = m_PauseMenu.FindAction("Continue", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -953,6 +1026,7 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
     private readonly InputAction m_OnFoot_Interact;
     private readonly InputAction m_OnFoot_SpeedUp;
     private readonly InputAction m_OnFoot_LowerDown;
+    private readonly InputAction m_OnFoot_Pause;
     public struct OnFootActions
     {
         private @PlayerInputController m_Wrapper;
@@ -964,6 +1038,7 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
         public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
         public InputAction @SpeedUp => m_Wrapper.m_OnFoot_SpeedUp;
         public InputAction @LowerDown => m_Wrapper.m_OnFoot_LowerDown;
+        public InputAction @Pause => m_Wrapper.m_OnFoot_Pause;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -994,6 +1069,9 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
             @LowerDown.started += instance.OnLowerDown;
             @LowerDown.performed += instance.OnLowerDown;
             @LowerDown.canceled += instance.OnLowerDown;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IOnFootActions instance)
@@ -1019,6 +1097,9 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
             @LowerDown.started -= instance.OnLowerDown;
             @LowerDown.performed -= instance.OnLowerDown;
             @LowerDown.canceled -= instance.OnLowerDown;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IOnFootActions instance)
@@ -1052,6 +1133,7 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
     private readonly InputAction m_UI_ClosedExchangeScale;
+    private readonly InputAction m_UI_Pause;
     public struct UIActions
     {
         private @PlayerInputController m_Wrapper;
@@ -1068,6 +1150,7 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
         public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
         public InputAction @ClosedExchangeScale => m_Wrapper.m_UI_ClosedExchangeScale;
+        public InputAction @Pause => m_Wrapper.m_UI_Pause;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1113,6 +1196,9 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
             @ClosedExchangeScale.started += instance.OnClosedExchangeScale;
             @ClosedExchangeScale.performed += instance.OnClosedExchangeScale;
             @ClosedExchangeScale.canceled += instance.OnClosedExchangeScale;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -1153,6 +1239,9 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
             @ClosedExchangeScale.started -= instance.OnClosedExchangeScale;
             @ClosedExchangeScale.performed -= instance.OnClosedExchangeScale;
             @ClosedExchangeScale.canceled -= instance.OnClosedExchangeScale;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -1170,6 +1259,52 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // PauseMenu
+    private readonly InputActionMap m_PauseMenu;
+    private List<IPauseMenuActions> m_PauseMenuActionsCallbackInterfaces = new List<IPauseMenuActions>();
+    private readonly InputAction m_PauseMenu_Continue;
+    public struct PauseMenuActions
+    {
+        private @PlayerInputController m_Wrapper;
+        public PauseMenuActions(@PlayerInputController wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Continue => m_Wrapper.m_PauseMenu_Continue;
+        public InputActionMap Get() { return m_Wrapper.m_PauseMenu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PauseMenuActions set) { return set.Get(); }
+        public void AddCallbacks(IPauseMenuActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PauseMenuActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PauseMenuActionsCallbackInterfaces.Add(instance);
+            @Continue.started += instance.OnContinue;
+            @Continue.performed += instance.OnContinue;
+            @Continue.canceled += instance.OnContinue;
+        }
+
+        private void UnregisterCallbacks(IPauseMenuActions instance)
+        {
+            @Continue.started -= instance.OnContinue;
+            @Continue.performed -= instance.OnContinue;
+            @Continue.canceled -= instance.OnContinue;
+        }
+
+        public void RemoveCallbacks(IPauseMenuActions instance)
+        {
+            if (m_Wrapper.m_PauseMenuActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPauseMenuActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PauseMenuActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PauseMenuActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PauseMenuActions @PauseMenu => new PauseMenuActions(this);
     public interface IOnFootActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -1179,6 +1314,7 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
         void OnInteract(InputAction.CallbackContext context);
         void OnSpeedUp(InputAction.CallbackContext context);
         void OnLowerDown(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -1194,5 +1330,10 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
         void OnClosedExchangeScale(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
+    }
+    public interface IPauseMenuActions
+    {
+        void OnContinue(InputAction.CallbackContext context);
     }
 }
