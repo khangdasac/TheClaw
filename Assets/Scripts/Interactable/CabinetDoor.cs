@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class CabinetDoor : Interactable
 {
     // Start is called before the first frame update
@@ -9,7 +10,6 @@ public class CabinetDoor : Interactable
     private GameObject cabinet;
     private bool isOpenDoor;
     void Start()
-
     {
         
     }

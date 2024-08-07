@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemIteractable : Interactable
+public class ItemInteractable : Interactable
 {
     public Item item;
     protected override void Interact()
