@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 [System.Serializable]
@@ -20,6 +19,13 @@ public class SerializableVector3
         x = vector.x;
         y = vector.y;
         z = vector.z;
+    }
+
+    public SerializableVector3(Quaternion quaternion)
+    {
+        x = quaternion.x;
+        y = quaternion.y;
+        z = quaternion.z;
     }
 
     public Vector3 ToVector3()

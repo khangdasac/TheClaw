@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     public void SaveGame()
     {
         // Cập nhật vị trí hiện tại của người chơi
-        gameData.playerPosition = new SerializableVector3(transform.position);
 
         // Chuyển đổi dữ liệu game sang JSON
         string json = JsonUtility.ToJson(gameData);
@@ -31,7 +30,6 @@ public class GameManager : MonoBehaviour
             gameData = JsonUtility.FromJson<GameData>(json);
 
             // Cập nhật vị trí người chơi
-            transform.position = gameData.playerPosition.ToVector3();
             Debug.Log("Game Loaded: " + json);
         }
         else
@@ -46,7 +44,8 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
-            gameData = new GameData(100, 200, new SerializableVector3(1, 2, 3));
+            CabinetData[] cabinetDatas = CabinetListManage.Instance.GetCabinetDatas();
+            gameData = new GameData(cabinetDatas);
             Debug.Log(Application.persistentDataPath + "/savefile.json");
             SaveGame();
         }

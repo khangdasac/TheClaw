@@ -1,14 +1,10 @@
 [System.Serializable]
 public class GameData
 {
-    public int playerScore;
-    public float playerHealth;
-    public SerializableVector3 playerPosition;
+    public CabinetData[] CabinetDatas;
 
-    public GameData(int playerScore, float playerHealth, SerializableVector3 playerPosition)
+    public GameData(CabinetData[] cabinetDatas)
     {
-        this.playerScore = playerScore;
-        this.playerHealth = playerHealth;
-        this.playerPosition = playerPosition;
+        CabinetDatas = cabinetDatas;
     }
 }
