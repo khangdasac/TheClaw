@@ -3,7 +3,10 @@ using UnityEngine;
 [System.Serializable]
 public class SerializableQuaternion
 {
-    public float x, y, z, w;
+    public float x;
+    public float y;
+    public float z;
+    public float w;
 
     public SerializableQuaternion(Quaternion quaternion)
     {

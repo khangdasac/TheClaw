@@ -25,8 +25,8 @@ public class SerializableTransform
 
     public SerializableTransform(Transform transform)
     {
-        this.position = new SerializableVector3(transform.position);
-        this.rotation = new SerializableQuaternion(transform.rotation);
+        this.position = new SerializableVector3(transform.localPosition);
+        this.rotation = new SerializableQuaternion(transform.localRotation);
         this.scale = new SerializableVector3(transform.localScale);
     }
 

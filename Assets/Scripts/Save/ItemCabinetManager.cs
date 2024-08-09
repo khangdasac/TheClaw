@@ -64,9 +64,13 @@ public class ItemCabinetManager : MonoBehaviour
             Item item = FindItemPrefab(itemDatas[i].id);
             if (item != null)
             {
-                GameObject newObject = Instantiate(item.prefab, itemDatas[i].transform.position.ToVector3(), itemDatas[i].transform.position.ToQuaternion());
+                GameObject newObject = Instantiate(item.prefab);
                 newObject.transform.SetParent(items);
-                Debug.Log("Heloooo");
+
+                newObject.transform.localPosition = itemDatas[i].transform.position.ToVector3();
+                newObject.transform.localRotation = itemDatas[i].transform.rotation.ToQuaternion();
+                newObject.transform.localScale = itemDatas[i].transform.scale.ToVector3();
+
             }
         }
     }
