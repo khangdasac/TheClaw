@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Blue Gem
   quantity: 0
   icon: {fileID: 21300000, guid: 9a4a554946639ff4ba2f4b7253c8663f, type: 3}
+  prefab: {fileID: 157733734484016851, guid: af3830c6af1d10a459557e02883241c1, type: 3}

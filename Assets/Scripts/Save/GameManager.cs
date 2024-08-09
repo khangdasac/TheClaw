@@ -29,23 +29,25 @@ public class GameManager : MonoBehaviour
             // Chuyển đổi JSON thành dữ liệu game
             gameData = JsonUtility.FromJson<GameData>(json);
 
+
             // Cập nhật vị trí người chơi
-            Debug.Log("Game Loaded: " + json);
+            CabinetListManager.Instance.SetCabinetDatas(gameData.cabinetDatas);
         }
         else
         {
             Debug.LogError("Save file not found in " + path);
         }
-
-
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.K))
         {
-            CabinetData[] cabinetDatas = CabinetListManage.Instance.GetCabinetDatas();
-            gameData = new GameData(cabinetDatas);
+            CabinetData[] cabinetDatas = CabinetListManager.Instance.GetCabinetDatas();
+            EngineTableData engineTableData = EngineTable.Instance.GetEngineTableData();
+            SerializableTransform playerTransform = PlayerDataManager.Instance.GetPlayerTransform();
+            SerializableTransform monsterTransform = MonsterDataManager.Instance.GetMonsterTransform();
+            gameData = new GameData(cabinetDatas, engineTableData, playerTransform, monsterTransform);
             Debug.Log(Application.persistentDataPath + "/savefile.json");
             SaveGame();
         }

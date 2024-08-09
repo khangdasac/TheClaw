@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 5
   itemName: Gear
-  value: 1
+  quantity: 0
   icon: {fileID: 21300000, guid: 6c074bf7e965a3d468e62361d829a592, type: 3}
+  prefab: {fileID: 3563433456280184289, guid: 86113fd32aac1e14491771b7de982c45, type: 3}

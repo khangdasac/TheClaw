@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemCabinetManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+
     void Start()
     {
         
@@ -20,15 +20,25 @@ public class ItemCabinetManager : MonoBehaviour
     {
         Transform items = transform.Find("Items");
         ItemInteractable[] itemInteractables = items.GetComponentsInChildren<ItemInteractable>();
-        Transform[] itemTransform = items.GetComponentsInChildren<Transform>();
+
+        
         int length = itemInteractables.Length;
-        ItemData[] itemDatas = new ItemData[length];
+        Transform[] itemTransform = new Transform[length];
+        int j = 0;
+        foreach (Transform child in items)
+        {
+            itemTransform[j] = child;
+            j++;
+        }
+
+        Debug.Log(itemInteractables.Length + " và " + itemTransform.Length);
+
+        ItemData[] itemDatas = new ItemData[length];  
         for (int i = 0; i < length; i++)
         {
             itemDatas[i] = new ItemData(
                     itemInteractables[i].item.id,
-                    new SerializableVector3(itemTransform[i].position),
-                    new SerializableVector3(itemTransform[i].rotation)
+                    itemTransform[i]
                 );
         }
         return itemDatas;
@@ -37,5 +47,44 @@ public class ItemCabinetManager : MonoBehaviour
     public bool IsOpen()
     {
         return GetComponent<Animator>().GetBool("isOpen");
+    }
+
+    public void SetItemDatas(ItemData[] itemDatas)
+    {
+        Transform items = transform.Find("Items");
+        foreach(Transform child in items)
+        {
+            Destroy(child.gameObject);
+        }
+
+        int length = itemDatas.Length;
+
+        for(int i = 0;i < length;i++)
+        {
+            Item item = FindItemPrefab(itemDatas[i].id);
+            if (item != null)
+            {
+                GameObject newObject = Instantiate(item.prefab, itemDatas[i].transform.position.ToVector3(), itemDatas[i].transform.position.ToQuaternion());
+                newObject.transform.SetParent(items);
+                Debug.Log("Heloooo");
+            }
+        }
+    }
+
+    public void SetIsOpen(bool isOpen)
+    {
+        GetComponent<Animator>().SetBool("isOpen", isOpen);
+    }
+
+    public Item FindItemPrefab(int id)
+    {
+        Item[] itemPrefabs = CabinetListManager.Instance.itemPrefabs;
+        int length = itemPrefabs.Length;
+        for(int i = 0; i < length; i++)
+        {
+            if (itemPrefabs[i].id == id)
+                return itemPrefabs[i];
+        }
+        return null;
     }
 }

@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Green Gem
   quantity: 0
   icon: {fileID: 21300000, guid: 953fb4e74892ad8419fa89d0085ba105, type: 3}
+  prefab: {fileID: 5343106370968100332, guid: 6d809f73242b3b445a5c6e980854d974, type: 3}

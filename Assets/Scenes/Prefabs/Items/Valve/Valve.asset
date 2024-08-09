@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Valve
   quantity: 1
   icon: {fileID: 21300000, guid: 30588d7e47ed83540ba6aefca8de6fe0, type: 3}
+  prefab: {fileID: 7955927475527889797, guid: ee9fa941a79923640ac470e61b7e4dd9, type: 3}

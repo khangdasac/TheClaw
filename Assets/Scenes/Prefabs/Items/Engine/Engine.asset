@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Engine
   quantity: 0
   icon: {fileID: 21300000, guid: 252e64e6a2832824e883446f7e2fe9f5, type: 3}
+  prefab: {fileID: 5511023947925167527, guid: 4b3cc771a9695694aab3b3d07babf6ef, type: 3}

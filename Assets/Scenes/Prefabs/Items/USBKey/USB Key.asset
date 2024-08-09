@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: USB Key
   quantity: 0
   icon: {fileID: 21300000, guid: b64855a0775ac6e41bfad8b3ff4f16b0, type: 3}
+  prefab: {fileID: 6782773616935837423, guid: 4e08e59a8ddeeb94ca4ef498068fe427, type: 3}

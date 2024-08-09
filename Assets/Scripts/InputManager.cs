@@ -103,5 +103,4 @@ public class InputManager : MonoBehaviour
             pause.Enable();
         }
     }
-
 }

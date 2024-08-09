@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Floppy
   quantity: 0
   icon: {fileID: 21300000, guid: 362d049ccc6622c4d840c7048776b484, type: 3}
+  prefab: {fileID: 3255837668721067773, guid: 0eccacf6ed8ac11438787aa3745cc523, type: 3}

@@ -10,6 +10,7 @@ public class Item : ScriptableObject
     public string itemName;
     public int quantity;
     public Sprite icon;
+    public GameObject prefab;
 
     public override bool Equals(object obj)
     {
@@ -38,5 +39,10 @@ public class Item : ScriptableObject
     public Item()
     {
 
+    }
+
+    public Item(int id, string itemName, int quantity, Sprite icon, GameObject prefab) : this(id, itemName, quantity, icon)
+    {
+        this.prefab = prefab;
     }
 }

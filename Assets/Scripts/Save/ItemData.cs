@@ -1,14 +1,18 @@
-
+using UnityEngine;
 [System.Serializable]
 public class ItemData
 {
     public int id;
-    public SerializableVector3 position;
-    public SerializableVector3 rotation;
-    public ItemData(int id, SerializableVector3 position, SerializableVector3 rotation)
+    public SerializableTransform transform;
+    public ItemData(int id, SerializableTransform transform)
     {
         this.id = id;
-        this.position = position;
-        this.rotation = rotation;
+        this.transform = transform;
+    }
+
+    public ItemData(int id, Transform transform)
+    {
+        this.id = id;
+        this.transform = new SerializableTransform(transform);
     }
 }

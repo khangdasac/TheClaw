@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Battery C
   quantity: 0
   icon: {fileID: 21300000, guid: 60c5e78db9f2d5847b909fb9bbbdfc16, type: 3}
+  prefab: {fileID: 3019161775642865684, guid: f42ca0b0df5bcd643b517a1a90822e69, type: 3}

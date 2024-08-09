@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Red Gem
   quantity: 0
   icon: {fileID: 21300000, guid: 1b47ea00a97a6c14380767065fb54cc0, type: 3}
+  prefab: {fileID: 3404145563741399300, guid: 41d1fb64b98a712498f24574001dc46f, type: 3}

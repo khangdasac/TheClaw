@@ -31,7 +31,16 @@ public class SerializableVector3
     public Vector3 ToVector3()
     {
         return new Vector3(x, y, z);
+    }    
+    public Quaternion ToQuaternion()
+    {
+        Quaternion quaternion = new Quaternion();
+        quaternion.x = x;
+        quaternion.y = y;
+        quaternion.z = z;
+        return quaternion;
     }
+
 
 
 }

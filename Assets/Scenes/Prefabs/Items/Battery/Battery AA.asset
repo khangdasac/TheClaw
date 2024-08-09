@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Battery AA
   quantity: 3
   icon: {fileID: 21300000, guid: 87390de463b8f5f4ca12c9ffa1fe80ae, type: 3}
+  prefab: {fileID: 567147022187255751, guid: 7a51a265c46a2994a81bfe2a7fa379c7, type: 3}

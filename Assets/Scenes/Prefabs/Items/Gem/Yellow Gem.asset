@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Yellow Gem
   quantity: 0
   icon: {fileID: 21300000, guid: 6efb40e1ed6cec34eb6df35393278402, type: 3}
+  prefab: {fileID: 1501433250573881312, guid: e5188a213d5538843afb074269db7eec, type: 3}

@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   itemName: Card
-  value: 1
+  quantity: 0
   icon: {fileID: 21300000, guid: 243af86c5ed4a4e4a919248ea09d8b5a, type: 3}
+  prefab: {fileID: 593542545141281283, guid: 9a80f6177ba994c4bbd1c00882bfc695, type: 3}
