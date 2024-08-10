@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 
             // Cập nhật vị trí người chơi
             CabinetListManager.Instance.SetCabinetDatas(gameData.cabinetDatas);
+            PlayerDataManager.Instance.SetPlayerTransform(gameData.playerTransform);
         }
         else
         {

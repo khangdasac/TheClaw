@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 94187239459391985}
-  m_Layer: 0
+  - component: {fileID: 4564100658202520431}
+  - component: {fileID: -875883896859042661}
+  m_Layer: 6
   m_Name: Crank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,11 +34,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4564100658202520431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156424916853367509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 163995317bdca7a4b8aa5890ff78b225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useEvents: 0
+  promptMessage: Press E to pick up
+  item: {fileID: 11400000, guid: 91000fb77eed230498c679495e0854e0, type: 2}
+--- !u!65 &-875883896859042661
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156424916853367509}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.03597331, y: 0.099655524, z: 0.14040148}
+  m_Center: {x: -0.00033438206, y: -0.00011730194, z: -0.013024211}
 --- !u!1001 &3229919285457927319
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 94187239459391985}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 576c615aede1b3e44b1022bae3e08b6a, type: 3}
@@ -91,7 +130,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crank
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 576c615aede1b3e44b1022bae3e08b6a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 576c615aede1b3e44b1022bae3e08b6a, type: 3}
 --- !u!4 &3123320040273369980 stripped
 Transform:

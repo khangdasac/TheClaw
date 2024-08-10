@@ -10,6 +10,10 @@ public class CabinetListManager : MonoBehaviour
 
     public static CabinetListManager Instance { get => instance; set => instance = value; }
 
+
+    public AudioSource sfxAudioSource;
+    public AudioClip pickUpItemAudioClip;
+
     private void Start()
     {
         Instance = this;
@@ -40,6 +44,12 @@ public class CabinetListManager : MonoBehaviour
             itemCabinetManagers[i].SetIsOpen(cabinetDatas[i].isOpen);
         }
 
+    }
+
+    public void PlayPickUpAudio()
+    {
+        Debug.Log("PlayPickUpAudio");
+        sfxAudioSource.PlayOneShot(pickUpItemAudioClip, 0.4f);
     }
 
 }

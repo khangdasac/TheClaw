@@ -11,11 +11,18 @@ public class PlayerDataManager : MonoBehaviour
     void Start()
     {
         Instance = this;
-        
     }
 
     public SerializableTransform GetPlayerTransform()
     {
         return new SerializableTransform(transform);
+    }
+
+    public void SetPlayerTransform(SerializableTransform transform)
+    {
+        CharacterController characterController = GetComponent<CharacterController>();
+        characterController.enabled = false;
+        transform.ApplyToTransform(gameObject.transform);
+        characterController.enabled = true; 
     }
 }

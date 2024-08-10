@@ -71,6 +71,10 @@ public class ItemCabinetManager : MonoBehaviour
                 newObject.transform.localRotation = itemDatas[i].transform.rotation.ToQuaternion();
                 newObject.transform.localScale = itemDatas[i].transform.scale.ToVector3();
 
+                InteractionEvent itemInteractable = newObject.GetComponent<InteractionEvent>();
+
+                itemInteractable?.onInteract.AddListener(() => CabinetListManager.Instance.PlayPickUpAudio());
+
             }
         }
     }
