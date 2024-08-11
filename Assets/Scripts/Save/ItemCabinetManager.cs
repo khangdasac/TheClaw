@@ -31,8 +31,6 @@ public class ItemCabinetManager : MonoBehaviour
             j++;
         }
 
-        Debug.Log(itemInteractables.Length + " và " + itemTransform.Length);
-
         ItemData[] itemDatas = new ItemData[length];  
         for (int i = 0; i < length; i++)
         {
@@ -67,11 +65,14 @@ public class ItemCabinetManager : MonoBehaviour
                 GameObject newObject = Instantiate(item.prefab);
                 newObject.transform.SetParent(items);
 
-                newObject.transform.localPosition = itemDatas[i].transform.position.ToVector3();
-                newObject.transform.localRotation = itemDatas[i].transform.rotation.ToQuaternion();
-                newObject.transform.localScale = itemDatas[i].transform.scale.ToVector3();
+                //newObject.transform.localPosition = itemDatas[i].transform.position.ToVector3();
+                //newObject.transform.localRotation = itemDatas[i].transform.rotation.ToQuaternion();
+                //newObject.transform.localScale = itemDatas[i].transform.scale.ToVector3();
+
+                itemDatas[i].transform.ApplyToLocalTransform(newObject.transform);
 
                 InteractionEvent itemInteractable = newObject.GetComponent<InteractionEvent>();
+
 
                 itemInteractable?.onInteract.AddListener(() => CabinetListManager.Instance.PlayPickUpAudio());
 

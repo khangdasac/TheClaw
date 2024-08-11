@@ -36,4 +36,11 @@ public class SerializableTransform
         transform.rotation = this.rotation.ToQuaternion(); 
         transform.localScale = this.scale.ToVector3();
     }
+
+    public void ApplyToLocalTransform(Transform transform)
+    {
+        transform.localPosition = this.position.ToVector3();
+        transform.localRotation = this.rotation.ToQuaternion();
+        transform.localScale = this.scale.ToVector3();
+    }
 }

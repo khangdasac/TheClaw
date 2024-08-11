@@ -49,8 +49,5 @@ public class EngineTable : Interactable
        keypad.UpdateStateKeypad(isEnough);
     }
 
-    public EngineTableData GetEngineTableData()
-    {
-        return new EngineTableData(engine.active, wiringSystem.active, bigBattery.active);
-    }
+
 }

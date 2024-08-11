@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
             // Cập nhật vị trí người chơi
             CabinetListManager.Instance.SetCabinetDatas(gameData.cabinetDatas);
             PlayerDataManager.Instance.SetPlayerTransform(gameData.playerTransform);
+            EngineTableDataManager.Instance.SetEngineTableData(gameData.engineTableData);
+            MonsterDataManager.Instance.SetMonsterTransform(gameData.monsterTransform);
         }
         else
         {
@@ -45,7 +47,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             CabinetData[] cabinetDatas = CabinetListManager.Instance.GetCabinetDatas();
-            EngineTableData engineTableData = EngineTable.Instance.GetEngineTableData();
+            EngineTableData engineTableData = EngineTableDataManager.Instance.GetEngineTableData();
             SerializableTransform playerTransform = PlayerDataManager.Instance.GetPlayerTransform();
             SerializableTransform monsterTransform = MonsterDataManager.Instance.GetMonsterTransform();
             gameData = new GameData(cabinetDatas, engineTableData, playerTransform, monsterTransform);

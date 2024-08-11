@@ -18,4 +18,9 @@ public class MonsterDataManager : MonoBehaviour
     {
         return new SerializableTransform(transform);
     }
+
+    public void SetMonsterTransform(SerializableTransform monsterTransform)
+    {
+        monsterTransform.ApplyToTransform(transform);
+    }
 }

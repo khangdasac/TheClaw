@@ -6,13 +6,13 @@ using UnityEngine;
 public class EngineTableData
 {
     public bool wiringSystem;
-    public bool bigBettery;
+    public bool bigBattery;
     public bool engine;
 
-    public EngineTableData(bool wiringSystem, bool bigBettery, bool engine)
+    public EngineTableData(bool wiringSystem, bool bigBattery, bool engine)
     {
         this.wiringSystem = wiringSystem;
-        this.bigBettery = bigBettery;
+        this.bigBattery = bigBattery;
         this.engine = engine;
     }
 }

@@ -3430,6 +3430,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6930701229246200386, guid: 4442f70ab81cfb749868913be6f0e129, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1414861857}
+    - targetCorrespondingSourceObject: {fileID: 6930701229246200386, guid: 4442f70ab81cfb749868913be6f0e129, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1414861860}
   m_SourcePrefab: {fileID: 100100000, guid: 4442f70ab81cfb749868913be6f0e129, type: 3}
 --- !u!1001 &126618101
 PrefabInstance:
@@ -18189,7 +18192,7 @@ MonoBehaviour:
     cabinetDatas: []
     engineTableData:
       wiringSystem: 0
-      bigBettery: 0
+      bigBattery: 0
       engine: 0
     playerTransform:
       position:
@@ -30199,6 +30202,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1414861860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414861849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9b602fdef94d144abe64643141a03f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  engine: {fileID: 736601738}
+  wiringSystem: {fileID: 735689145}
+  bigBattery: {fileID: 1025284966}
 --- !u!1001 &1416237445
 PrefabInstance:
   m_ObjectHideFlags: 0
