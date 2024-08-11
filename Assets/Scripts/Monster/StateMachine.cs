@@ -6,6 +6,8 @@ public class StateMachine : MonoBehaviour
 {
     public BaseState activeState;
     public PatrolState patrolState;
+
+    public Camera playerCamera;
     void Start()
     {
         patrolState = new PatrolState();
@@ -33,6 +35,7 @@ public class StateMachine : MonoBehaviour
         {
             activeState.stateMachine = this;
             activeState.monster = GetComponent<Monster>();
+            activeState.camera = playerCamera;
             activeState.Enter();
         }
     }

@@ -14478,6 +14478,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7ee1afd705f224da509c70a5023d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &620987736 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1034095335617978762, guid: f73804a3b3563904f9e7ba3a7c7ec6f1, type: 3}
+  m_PrefabInstance: {fileID: 7395590786652480529}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &622188333
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43339,6 +43344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f86ce736f749db459801fb9edf6f55c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCamera: {fileID: 620987736}
 --- !u!114 &2099342996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43355,8 +43361,6 @@ MonoBehaviour:
   sightDistance: 80
   fieldOfView: 85
   eyeHeight: 9
-  gunBarrel: {fileID: 0}
-  fireRate: 2.42
   currentState: 
   animator: {fileID: 2099343002}
   navMeshAgent: {fileID: 2099342994}

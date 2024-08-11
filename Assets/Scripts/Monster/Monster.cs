@@ -18,10 +18,6 @@ public class Monster : MonoBehaviour
     public float fieldOfView = 80f;
     public float eyeHeight;
 
-    [Header("Weapon Values")]
-    public Transform gunBarrel;
-    [Range(0.1f, 10f)]
-    public float fireRate;
     [SerializeField]
     private string currentState;
 
@@ -78,7 +74,7 @@ public class Monster : MonoBehaviour
                         if (hitInfo.transform.gameObject == Player)
                         {
                             //Debug.Log("Monster seen player");
-                            //monsterAudioSource.PlayOneShot(monsterShoutClip, 0.2f);
+                            monsterAudioSource.PlayOneShot(monsterShoutClip, 0.1f);
                             return true;
                         }
                     }
