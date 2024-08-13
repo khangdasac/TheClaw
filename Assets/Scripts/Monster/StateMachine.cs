@@ -8,6 +8,7 @@ public class StateMachine : MonoBehaviour
     public PatrolState patrolState;
 
     public Camera playerCamera;
+    public GameObject headMonster;
     void Start()
     {
         patrolState = new PatrolState();
@@ -29,13 +30,15 @@ public class StateMachine : MonoBehaviour
         { 
             activeState.Exit();
         }
+
         activeState = newState;
 
         if(activeState != null )
         {
             activeState.stateMachine = this;
             activeState.monster = GetComponent<Monster>();
-            activeState.camera = playerCamera;
+            activeState.playerCamera = playerCamera;
+            activeState.headMonster = headMonster;
             activeState.Enter();
         }
     }

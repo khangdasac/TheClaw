@@ -70,8 +70,10 @@ public class InputManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        playerLook.ProcessLook(onFoot.Look.ReadValue<Vector2>());
-
+        if(!PlayerGameplay.Instance.isGameOver)
+        {
+            playerLook.ProcessLook(onFoot.Look.ReadValue<Vector2>());
+        }
     }
 
     private void OnEnable()

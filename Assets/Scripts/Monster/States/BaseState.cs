@@ -6,12 +6,11 @@ public abstract class BaseState
 {
     public StateMachine stateMachine;
     public Monster monster;
-    public Camera camera;
+    public Camera playerCamera;
+    public GameObject headMonster;
     public abstract void Enter();
     public abstract void Perform();
     public abstract void Exit();
-
-
 }
 
 
