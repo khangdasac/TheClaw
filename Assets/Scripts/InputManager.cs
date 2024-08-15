@@ -52,18 +52,22 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(onFoot.LowerDown.IsPressed())
-            playerMotor.speed = playerMotor.lowSpeed;
-        else if (onFoot.SpeedUp.IsPressed())
-            playerMotor.speed = playerMotor.highSpeed;
-        else
-            playerMotor.speed = playerMotor.normalSpeed;
 
-        playerLook.isLowerDown = onFoot.LowerDown.IsPressed();
 
-        playerMotor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
+        if (!PlayerGameplay.Instance.isGameOver)
+        {
+            if (onFoot.LowerDown.IsPressed())
+                playerMotor.speed = playerMotor.lowSpeed;
+            else if (onFoot.SpeedUp.IsPressed())
+                playerMotor.speed = playerMotor.highSpeed;
+            else
+                playerMotor.speed = playerMotor.normalSpeed;
 
-        playerMotor.FootStepSound(onFoot.Movement.ReadValue<Vector2>());
+            playerLook.isLowerDown = onFoot.LowerDown.IsPressed();
+            playerMotor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
+            playerMotor.FootStepSound(onFoot.Movement.ReadValue<Vector2>());
+        }
+
 
 
     }

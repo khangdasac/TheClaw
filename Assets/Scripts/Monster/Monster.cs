@@ -31,6 +31,12 @@ public class Monster : MonoBehaviour
 
     [Header("Shout")]
     public AudioClip monsterShoutClip;
+    public AudioClip monsterShoutEndClip;
+
+    [Header("Game over")]
+    public GameObject gameOverUI;
+    public GameObject gameOveContinueUI;
+
 
 
     // Start is called before the first frame update
@@ -93,5 +99,10 @@ public class Monster : MonoBehaviour
         monsterAudioSource.PlayOneShot(monsterFootStep, volumeScale);
         Debug.Log("Khoảng cách là: " + distance);
         Debug.Log("Âm thanh là: " + volumeScale);
+    }
+
+    public void PlayMonsterShoutEnd()
+    {
+        monsterAudioSource.PlayOneShot(monsterShoutEndClip, 0.5f);
     }
 }
