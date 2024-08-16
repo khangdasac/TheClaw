@@ -8,7 +8,7 @@ public class MonsterDataManager : MonoBehaviour
 
     public static MonsterDataManager Instance { get => instance; set => instance = value; }
 
-    void Start()
+    void Awake()
     {
         Instance = this;
         //gameObject.SetActive(false);
@@ -22,5 +22,10 @@ public class MonsterDataManager : MonoBehaviour
     public void SetMonsterTransform(SerializableTransform monsterTransform)
     {
         monsterTransform.ApplyToTransform(transform);
+    }
+
+    public SerializableTransform GetMonsterTransformDefault()
+    {
+        return new SerializableTransform(new Vector3(0, 0.666f, -67.5f), new Quaternion(0, 0, 0, 1), new Vector3(6, 6, 6));
     }
 }

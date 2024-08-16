@@ -97,8 +97,6 @@ public class Monster : MonoBehaviour
         float distance = Vector3.Distance(transform.position, Player.transform.position + Vector3.up * 2f);
         float volumeScale = distance < 5 ? 1 : (distance < 80 ? 5/distance : 0);
         monsterAudioSource.PlayOneShot(monsterFootStep, volumeScale);
-        Debug.Log("Khoảng cách là: " + distance);
-        Debug.Log("Âm thanh là: " + volumeScale);
     }
 
     public void PlayMonsterShoutEnd()

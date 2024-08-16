@@ -9,7 +9,7 @@ public class PlayerGameplay : MonoBehaviour
 
     public static PlayerGameplay Instance { get => instance; set => instance = value; }
 
-    private void Start()
+    void Awake()
     {
         Instance = this;
     }

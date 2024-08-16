@@ -114,4 +114,14 @@ public class ExchangeDeskManager : ItemsManager
 
     }
 
+    public void ResetExcahngeDesk()
+    {
+        foreach (ExchangeItem item in items)
+        {
+            item.quantity = 0;
+        }
+
+        ListItems();
+    }
+
 }

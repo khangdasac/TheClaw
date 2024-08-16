@@ -14,7 +14,7 @@ public class CabinetListManager : MonoBehaviour
     public AudioSource sfxAudioSource;
     public AudioClip pickUpItemAudioClip;
 
-    private void Start()
+    void Awake()
     {
         Instance = this;
     }

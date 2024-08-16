@@ -4,23 +4,50 @@ using UnityEngine.Playables;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager instance;
     public GameData gameData;
+    public TextAsset jsonFile;
 
-    public void SaveGame()
+    public InventoryManager inventoryManager;
+    public ExchangeDeskManager exchangeDeskManager_1;
+    public ExchangeDeskManager exchangeDeskManager_2;
+    public ExchangeDeskManager exchangeDeskManager_3;
+
+    public static GameManager Instance { get => instance; set => instance = value; }
+
+    void Awake()
     {
-        // Cập nhật vị trí hiện tại của người chơi
+        Instance = this;
+    }
+    void Start()
+    {
+        if(Variable.IsLoadFileSaveGame)
+            LoadGame();
+        else
+        {
+            LoadNewGame();
+            inventoryManager.ResetInventory();
+            exchangeDeskManager_1.ResetExcahngeDesk();
+            exchangeDeskManager_2.ResetExcahngeDesk();
+            exchangeDeskManager_3.ResetExcahngeDesk();
+        }
+    }
+    public void SaveGame()  
+    {
+        CabinetData[] cabinetDatas = CabinetListManager.Instance.GetCabinetDatas();
+        EngineTableData engineTableData = EngineTableDataManager.Instance.GetEngineTableData();
+        SerializableTransform playerTransform = PlayerDataManager.Instance.GetPlayerTransform();
+        SerializableTransform monsterTransform = MonsterDataManager.Instance.GetMonsterTransform();
+        gameData = new GameData(cabinetDatas, engineTableData, playerTransform, monsterTransform);
 
-        // Chuyển đổi dữ liệu game sang JSON
         string json = JsonUtility.ToJson(gameData);
 
-        // Lưu JSON vào file
-        File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
-        Debug.Log("Game Saved: " + json);
+        File.WriteAllText(Application.persistentDataPath + "/saveFile.json", json);
     }
 
     public void LoadGame()
     {
-        string path = Application.persistentDataPath + "/savefile.json";
+        string path = Application.persistentDataPath + "/saveFile.json";
         if (File.Exists(path))
         {
             // Đọc JSON từ file
@@ -46,18 +73,46 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            CabinetData[] cabinetDatas = CabinetListManager.Instance.GetCabinetDatas();
-            EngineTableData engineTableData = EngineTableDataManager.Instance.GetEngineTableData();
-            SerializableTransform playerTransform = PlayerDataManager.Instance.GetPlayerTransform();
-            SerializableTransform monsterTransform = MonsterDataManager.Instance.GetMonsterTransform();
-            gameData = new GameData(cabinetDatas, engineTableData, playerTransform, monsterTransform);
-            Debug.Log(Application.persistentDataPath + "/savefile.json");
+            Debug.Log(Application.persistentDataPath + "/saveFile.json");
             SaveGame();
         }
 
-        if (Input.GetKeyDown(KeyCode.L))
+        if(Input.GetKeyDown(KeyCode.L)) 
         {
             LoadGame();
+        }
+
+    }
+
+    public void SaveGameDefault()
+    {
+        CabinetData[] cabinetDatas = CabinetListManager.Instance.GetCabinetDatas();
+        EngineTableData engineTableData = EngineTableDataManager.Instance.GetEngineTableData();
+        SerializableTransform playerTransform = PlayerDataManager.Instance.GetPlayerTransformDefault();
+        SerializableTransform monsterTransform = MonsterDataManager.Instance.GetMonsterTransformDefault();
+        gameData = new GameData(cabinetDatas, engineTableData, playerTransform, monsterTransform);
+
+        string json = JsonUtility.ToJson(gameData);
+
+        File.WriteAllText(Application.persistentDataPath + "/saveFile.json", json);
+    }
+
+    public void LoadNewGame()
+    {
+        if (jsonFile != null)
+        {
+            string jsonContent = jsonFile.text;
+
+            gameData = JsonUtility.FromJson<GameData>(jsonContent);
+
+            CabinetListManager.Instance.SetCabinetDatas(gameData.cabinetDatas);
+            PlayerDataManager.Instance.SetPlayerTransform(gameData.playerTransform);
+            EngineTableDataManager.Instance.SetEngineTableData(gameData.engineTableData);
+            MonsterDataManager.Instance.SetMonsterTransform(gameData.monsterTransform);
+        }
+        else
+        {
+            Debug.LogError("JSON file is missing!");
         }
     }
 }

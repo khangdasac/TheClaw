@@ -10,7 +10,6 @@ public class InventoryManager : ItemsManager
     [SerializeField]
     public static InventoryManager instance;    
 
-
     public int maxItems = 30;
 
     [SerializeField]
@@ -19,16 +18,13 @@ public class InventoryManager : ItemsManager
     public static InventoryManager Instance { get => instance; set => instance = value; }
     public ExchangeDeskManager ExchangeDeskManager { get => exchangeDeskManager; set => exchangeDeskManager = value; }
 
-    void Start()
+    void Awake()
     {
         Instance = this;
+        ListItems();
         SetActive(false);
     }
 
-    private void Awake()
-    {
-        ListItems();
-    }
 
     public override bool addItem(Item addItem)
     {
@@ -91,6 +87,16 @@ public class InventoryManager : ItemsManager
                 quantity.text = item.quantity.ToString();
             }
         }
+    }
+
+    public void ResetInventory()
+    {
+        foreach(Item item in items)
+        {
+            item.quantity = 0;
+        }
+
+        ListItems();
     }
 
 

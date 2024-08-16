@@ -75,6 +75,7 @@ public class ItemCabinetManager : MonoBehaviour
 
 
                 itemInteractable?.onInteract.AddListener(() => CabinetListManager.Instance.PlayPickUpAudio());
+                itemInteractable?.onInteract.AddListener(() => GameManager.Instance.SaveGameDefault());
 
             }
         }
