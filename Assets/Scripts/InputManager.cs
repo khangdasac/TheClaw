@@ -54,7 +54,7 @@ public class InputManager : MonoBehaviour
     {
 
 
-        if (!PlayerGameplay.Instance.isGameOver)
+        if (PlayerGameplay.Instance.IsContinue())
         {
             if (onFoot.LowerDown.IsPressed())
                 playerMotor.speed = playerMotor.lowSpeed;
@@ -74,7 +74,7 @@ public class InputManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(!PlayerGameplay.Instance.isGameOver)
+        if(PlayerGameplay.Instance.IsContinue())
         {
             playerLook.ProcessLook(onFoot.Look.ReadValue<Vector2>());
         }

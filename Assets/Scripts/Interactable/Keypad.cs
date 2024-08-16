@@ -11,7 +11,7 @@ public class Keypad : Interactable
 
     void Start()
     {
-        
+        UpdateStateKeypad(EngineTable.Instance.isEnough);
     }
 
     // Update is called once per frame
@@ -36,7 +36,7 @@ public class Keypad : Interactable
         }
         else
         {
-            promptMessage = "The keypad can't be activated when the system doesn't have enough components";
+            promptMessage = "The keypad can't be activated when the system doesn't have enough three components";
 
         }
     }
