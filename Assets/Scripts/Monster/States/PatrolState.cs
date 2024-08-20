@@ -33,7 +33,7 @@ public class PatrolState : BaseState
             deltaTime += Time.deltaTime;
             if(deltaTime > waitTime)
             {
-
+                waypointIndex = Random.Range(0, monster.path.waypoints.Count);
                 if (waypointIndex < monster.path.waypoints.Count - 1)
                 {
                     waypointIndex++;

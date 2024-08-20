@@ -9,7 +9,7 @@ public class ChaseState : BaseState
     private float shotTimer;
     private Vector3 lastPlayerPosition;
     private static float waitTimer = 4f;
-    private static float speedChase = 15f;
+    private static float speedChase = 20f;
     public override void Enter()
     {
         

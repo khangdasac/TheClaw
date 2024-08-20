@@ -7,10 +7,6 @@ public class PlayerLook : MonoBehaviour
     public Camera camera;
     public float xRotation;
 
-
-    public float xSensitivity = 30f;
-    public float ySensitivity = 30f;
-
     public bool isLowerDown;
     private Vector3 lowerDownPositon;
     private Vector3 standUpPositon;
@@ -21,10 +17,10 @@ public class PlayerLook : MonoBehaviour
         float mouseX = input.x;
         float mouseY = input.y;
 
-        xRotation -= (mouseY * Time.deltaTime) * ySensitivity;
+        xRotation -= (mouseY * Time.deltaTime) * Variable.Sensitivity;
         xRotation = Mathf.Clamp(xRotation, -60f, 60f);
         camera.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
-        transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * xSensitivity);
+        transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * Variable.Sensitivity);
     }
 
 

@@ -4,14 +4,19 @@ using UnityEngine.Playables;
 
 public class GameManager : MonoBehaviour
 {
+    
     private static GameManager instance;
     public GameData gameData;
+    public SettingData settingData;
     public TextAsset jsonFile;
 
     public InventoryManager inventoryManager;
     public ExchangeDeskManager exchangeDeskManager_1;
     public ExchangeDeskManager exchangeDeskManager_2;
     public ExchangeDeskManager exchangeDeskManager_3;
+
+    public bool isLoadGameData;
+    public bool isLoadSettingData;
 
     public static GameManager Instance { get => instance; set => instance = value; }
 
@@ -21,16 +26,25 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        if(Variable.IsLoadFileSaveGame)
-            LoadGame();
-        else
+        if (isLoadGameData)
         {
-            LoadNewGame();
-            inventoryManager.ResetInventory();
-            exchangeDeskManager_1.ResetExcahngeDesk();
-            exchangeDeskManager_2.ResetExcahngeDesk();
-            exchangeDeskManager_3.ResetExcahngeDesk();
+            if (Variable.IsLoadFileSaveGame)
+                LoadGame();
+            else
+            {
+                LoadNewGame();
+                inventoryManager.ResetInventory();
+                exchangeDeskManager_1.ResetExcahngeDesk();
+                exchangeDeskManager_2.ResetExcahngeDesk();
+                exchangeDeskManager_3.ResetExcahngeDesk();
+            }
         }
+
+        if(isLoadSettingData)
+        {
+            
+        }
+
     }
     public void SaveGame()  
     {
@@ -69,20 +83,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Debug.Log(Application.persistentDataPath + "/saveFile.json");
-            SaveGame();
-        }
-
-        if(Input.GetKeyDown(KeyCode.L)) 
-        {
-            LoadGame();
-        }
-
-    }
 
     public void SaveGameDefault()
     {
@@ -113,6 +113,26 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.LogError("JSON file is missing!");
+        }
+    }
+
+    public void SaveSettingData()
+    {
+        settingData = SettingMenuManager.Instance.GetSettingData();
+        string json = JsonUtility.ToJson(settingData);
+        File.WriteAllText(Application.persistentDataPath + "/settingData.json", json);
+    }
+
+    public void LoadSettingData()
+    {
+        string path = Application.persistentDataPath + "/settingData.json";
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+
+            settingData = JsonUtility.FromJson<SettingData>(json);
+
+            SettingMenuManager.Instance.SetSettingData(settingData);
         }
     }
 }

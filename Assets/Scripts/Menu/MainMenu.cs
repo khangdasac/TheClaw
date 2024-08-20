@@ -7,10 +7,13 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject mainMenu;
     public GameObject settingsMenu;
+    public Confirm confirmMenu;
+
     // Start is called before the first frame update
     public void NewPlay()
     {
-        SceneManager.LoadScene(1);
+
+        confirmMenu.ShowConfirm("Old data will be lost if you continue. Do you want to continue?");
     }
 
     public void Exit()
