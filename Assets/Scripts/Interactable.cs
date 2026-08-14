@@ -7,7 +7,9 @@ public abstract class Interactable : MonoBehaviour
     public bool useEvents;
     [SerializeField]
     public string promptMessage;
-    // Start is called before the first frame update
+
+    public InteractionType interactionType = InteractionType.Click;
+    public float holdDuration = 1f;
 
     public void BaseInteract()
     {
@@ -21,4 +23,11 @@ public abstract class Interactable : MonoBehaviour
     {
 
     }
+}
+
+public enum InteractionType
+{
+    Click,
+    Hold,
+    Continuous
 }

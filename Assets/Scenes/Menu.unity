@@ -5495,7 +5495,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The Nail
+  m_text: The Claw
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a7000296b36c1b4f936dad33e7994f8, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 4ad21757c78a08e4cb947ffad7e7d2c8, type: 2}

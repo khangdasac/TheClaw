@@ -12,8 +12,8 @@ public class PlayerMotor : MonoBehaviour
 
     [Header("Player's parameters")]
     public float speed = 10f;
-    public float highSpeed = 20f;
-    public float lowSpeed = 5f;
+    public float highSpeed = 25f;
+    public float lowSpeed = 10f;
     public float normalSpeed = 10f;
     public float jumpHeight = 1.2f;
 
