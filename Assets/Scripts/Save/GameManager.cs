@@ -129,10 +129,13 @@ public class GameManager : MonoBehaviour
         if (File.Exists(path))
         {
             string json = File.ReadAllText(path);
-
             settingData = JsonUtility.FromJson<SettingData>(json);
-
-            SettingMenuManager.Instance.SetSettingData(settingData);
         }
+        else
+        {
+            settingData = new SettingData(0f, 0f, 0f, 30f);
+        }
+
+        SettingMenuManager.Instance.SetSettingData(settingData);
     }
 }

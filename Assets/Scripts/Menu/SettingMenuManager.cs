@@ -71,5 +71,10 @@ public class SettingMenuManager : MonoBehaviour
         musicVol.value = settingData.musicVol;
         sfxVol.value = settingData.sfxVol;
         sensitivity.value = settingData.sensitivity;
+
+        Variable.Sensitivity = settingData.sensitivity;
+        Variable.MasterVolume = settingData.masterVol;
+        Variable.MusicVolume = settingData.musicVol;
+        Variable.SfxVolume = settingData.sfxVol;
     }
 }
