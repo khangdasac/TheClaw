@@ -14581,6 +14581,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useEvents: 1
   promptMessage: Press E to change
+  interactionType: 0
+  holdDuration: 1
   exchangeDeskManager: {fileID: 930644134}
 --- !u!114 &606861338
 MonoBehaviour:
@@ -29605,6 +29607,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useEvents: 1
   promptMessage: Press E to change
+  interactionType: 0
+  holdDuration: 1
   exchangeDeskManager: {fileID: 106346716}
 --- !u!65 &1319497381
 BoxCollider:
@@ -30917,6 +30921,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useEvents: 1
   promptMessage: Press E to set down items
+  interactionType: 0
+  holdDuration: 1
   engine: {fileID: 736601738}
   wiringSystem: {fileID: 735689145}
   bigBattery: {fileID: 1025284966}
@@ -40012,6 +40018,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useEvents: 1
   promptMessage: Press E to change
+  interactionType: 0
+  holdDuration: 1
   exchangeDeskManager: {fileID: 1696297617}
 --- !u!65 &1856340652
 BoxCollider:
@@ -41119,6 +41127,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useEvents: 1
   promptMessage: Press E to use keypad
+  interactionType: 0
+  holdDuration: 1
   door: {fileID: 1504644177}
 --- !u!65 &1901796532
 BoxCollider:
@@ -50261,7 +50271,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 8cd3e7a4cd47c704589844a518597e5b, type: 3}
     - target: {fileID: 2827805381958478415, guid: f73804a3b3563904f9e7ba3a7c7ec6f1, type: 3}
       propertyPath: highSpeed
-      value: 20
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2827805381958478415, guid: f73804a3b3563904f9e7ba3a7c7ec6f1, type: 3}
       propertyPath: jumpHeight
@@ -54248,7 +54258,7 @@ PrefabInstance:
       value: 0.06470965
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 1426118318839362758, guid: f73804a3b3563904f9e7ba3a7c7ec6f1, type: 3}
+    - {fileID: 0}
     - {fileID: 8994534194083156566, guid: f73804a3b3563904f9e7ba3a7c7ec6f1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

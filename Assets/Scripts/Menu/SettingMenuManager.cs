@@ -57,24 +57,14 @@ public class SettingMenuManager : MonoBehaviour
 
     void Start()
     {
-        GameManager.Instance.LoadSettingData();
+        SetSettingData();
     }
 
-    public SettingData GetSettingData()
+    public void SetSettingData()
     {
-        return new SettingData(Variable.MasterVolume, Variable.MusicVolume, Variable.SfxVolume, Variable.Sensitivity);
-    }
-
-    public void SetSettingData(SettingData settingData)
-    {
-        masterVol.value = settingData.masterVol;
-        musicVol.value = settingData.musicVol;
-        sfxVol.value = settingData.sfxVol;
-        sensitivity.value = settingData.sensitivity;
-
-        Variable.Sensitivity = settingData.sensitivity;
-        Variable.MasterVolume = settingData.masterVol;
-        Variable.MusicVolume = settingData.musicVol;
-        Variable.SfxVolume = settingData.sfxVol;
+        masterVol.value = Variable.MasterVolume;
+        musicVol.value = Variable.MusicVolume;
+        sfxVol.value = Variable.SfxVolume;
+        sensitivity.value = Variable.Sensitivity;
     }
 }

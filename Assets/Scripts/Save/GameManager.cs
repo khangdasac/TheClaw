@@ -118,24 +118,8 @@ public class GameManager : MonoBehaviour
 
     public void SaveSettingData()
     {
-        settingData = SettingMenuManager.Instance.GetSettingData();
+        settingData = Variable.GetSettingData();
         string json = JsonUtility.ToJson(settingData);
         File.WriteAllText(Application.persistentDataPath + "/settingData.json", json);
-    }
-
-    public void LoadSettingData()
-    {
-        string path = Application.persistentDataPath + "/settingData.json";
-        if (File.Exists(path))
-        {
-            string json = File.ReadAllText(path);
-            settingData = JsonUtility.FromJson<SettingData>(json);
-        }
-        else
-        {
-            settingData = new SettingData(0f, 0f, 0f, 30f);
-        }
-
-        SettingMenuManager.Instance.SetSettingData(settingData);
     }
 }

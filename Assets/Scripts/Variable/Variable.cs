@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class Variable : MonoBehaviour
@@ -19,12 +20,32 @@ public class Variable : MonoBehaviour
 
     void Start()
     {
-        
+        string path = Application.persistentDataPath + "/settingData.json";
+        SettingData settingData;
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            settingData = JsonUtility.FromJson<SettingData>(json);
+        }
+        else
+        {
+            settingData = new SettingData(0f, 0f, 0f, 30f);
+        }
+
+        sensitivity = settingData.sensitivity;
+        masterVolume = settingData.masterVol;
+        musicVolume = settingData.musicVol;
+        sfxVolume = settingData.sfxVol;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public static SettingData GetSettingData()
+    {
+        return new SettingData(masterVolume, musicVolume, sfxVolume, sensitivity);
     }
 }
