@@ -8,9 +8,16 @@ public class PlayerLook : MonoBehaviour
     public float xRotation;
 
     public bool isLowerDown;
-    private Vector3 lowerDownPositon;
-    private Vector3 standUpPositon;
 
+    [Header("Camera Height")]
+    public float lowerDownHeight = 5.3f;
+    public float standUpHeight = 6.8f;
+
+    [Header("Camera Movement")]
+    public float cameraMoveSpeed = 2f;
+
+    private Vector3 lowerDownPosition;
+    private Vector3 standUpPosition;
 
     public void ProcessLook(Vector2 input)
     {
@@ -19,16 +26,19 @@ public class PlayerLook : MonoBehaviour
 
         xRotation -= (mouseY * Time.deltaTime) * Variable.Sensitivity;
         xRotation = Mathf.Clamp(xRotation, -60f, 60f);
+
         camera.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
-        transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * Variable.Sensitivity);
+
+        transform.Rotate(
+            Vector3.up * (mouseX * Time.deltaTime) * Variable.Sensitivity
+        );
     }
-
-
 
     private void Update()
     {
-        standUpPositon = transform.position + Vector3.up * 5.3f;
-        lowerDownPositon = transform.position + Vector3.up * 3.9f;
+        standUpPosition = transform.position + Vector3.up * standUpHeight;
+        lowerDownPosition = transform.position + Vector3.up * lowerDownHeight;
+
         if (isLowerDown)
         {
             LowerDown();
@@ -41,15 +51,25 @@ public class PlayerLook : MonoBehaviour
 
     public void LowerDown()
     {
-        if(isLowerDown)
-            if(Vector3.Distance(camera.transform.position, lowerDownPositon) > 0.01f)
-                camera.transform.position = Vector3.MoveTowards(camera.transform.position, lowerDownPositon, 0.035f);
+        if (isLowerDown)
+        {
+            camera.transform.position = Vector3.MoveTowards(
+                camera.transform.position,
+                lowerDownPosition,
+                cameraMoveSpeed * Time.deltaTime
+            );
+        }
     }
 
     public void StandUp()
     {
-        if(!isLowerDown)
-            if (Vector3.Distance(camera.transform.position, standUpPositon) > 0.01f)
-                camera.transform.position = Vector3.MoveTowards(camera.transform.position, standUpPositon, 0.035f);
+        if (!isLowerDown)
+        {
+            camera.transform.position = Vector3.MoveTowards(
+                camera.transform.position,
+                standUpPosition,
+                cameraMoveSpeed * Time.deltaTime
+            );
+        }
     }
 }

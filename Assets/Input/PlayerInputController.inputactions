@@ -414,7 +414,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Pause",
+                    "name": "Continute",
                     "type": "Button",
                     "id": "08374d93-a10d-422e-bf14-c50bb4a8c4e5",
                     "expectedControlType": "Button",
@@ -871,7 +871,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Pause",
+                    "action": "Continute",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

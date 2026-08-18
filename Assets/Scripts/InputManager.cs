@@ -40,9 +40,11 @@ public class InputManager : MonoBehaviour
 
         UI.ClosedExchangeScale.performed += ctx => playerUI.CloseBag();
         UI.ClosedExchangeScale.performed += ctx => playerUI.CloseExchangeScale();
+        UI.Continute.performed += ctx => playerUI.CloseBag();
+        UI.Continute.performed += ctx => playerUI.CloseExchangeScale();
+
 
         onFoot.Pause.performed += ctx => pauseMenu.ActivePauseMenu();
-        UI.Pause.performed += ctx => pauseMenu.ActivePauseMenu();
 
         pause.Continue.performed += ctx => pauseMenu.Continue();
 

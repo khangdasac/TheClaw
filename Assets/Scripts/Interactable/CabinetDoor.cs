@@ -20,6 +20,11 @@ public class CabinetDoor : Interactable
         
     }
 
+    void Awake()
+    {
+        promptMessage = "Press E to open or close the door.";
+    }
+
     protected override void Interact()
     {
         isOpenDoor = !isOpenDoor;

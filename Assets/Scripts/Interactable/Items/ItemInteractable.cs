@@ -9,6 +9,7 @@ public class ItemInteractable : Interactable
     void Awake()
     {
         interactionType = InteractionType.Continuous;
+        promptMessage = "Hold or press E to pick up the item.";
     }
 
     protected override void Interact()

@@ -12,4 +12,9 @@ public class ExchangeScale : Interactable
     {
         exchangeDeskManager.SetActive(true);
     }
+
+    void Awake()
+    {
+        promptMessage = "Press E to change items.";
+    }
 }
