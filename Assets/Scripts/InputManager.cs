@@ -44,6 +44,8 @@ public class InputManager : MonoBehaviour
         onFoot.Pause.performed += ctx => pauseMenu.ActivePauseMenu();
         UI.Pause.performed += ctx => pauseMenu.ActivePauseMenu();
 
+        pause.Continue.performed += ctx => pauseMenu.Continue();
+
         //pause.Continue.performed += ctx => pauseMenu.Continue();
 
 
