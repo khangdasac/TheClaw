@@ -47,10 +47,6 @@ public class InputManager : MonoBehaviour
         onFoot.Pause.performed += ctx => pauseMenu.ActivePauseMenu();
 
         pause.Continue.performed += ctx => pauseMenu.Continue();
-
-        //pause.Continue.performed += ctx => pauseMenu.Continue();
-
-
     }
 
     // Update is called once per frame
@@ -78,7 +74,7 @@ public class InputManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(PlayerGameplay.Instance.IsContinue())
+        if (PlayerGameplay.Instance.IsContinue())
         {
             playerLook.ProcessLook(onFoot.Look.ReadValue<Vector2>());
         }

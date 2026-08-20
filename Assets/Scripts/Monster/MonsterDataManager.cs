@@ -11,7 +11,7 @@ public class MonsterDataManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     public SerializableTransform GetMonsterTransform()

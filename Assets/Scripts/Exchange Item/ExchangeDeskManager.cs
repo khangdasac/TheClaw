@@ -14,6 +14,10 @@ public class ExchangeDeskManager : ItemsManager
 
     public Item receivedItem;
 
+    [Header("Toggle when exchanged")]
+    public GameObject objExchanged;
+    public GameObject objExchange;
+
 
     void Start()
     {
@@ -76,7 +80,8 @@ public class ExchangeDeskManager : ItemsManager
             var itemName = obj.transform.Find("ItemName").GetComponent<TextMeshProUGUI>();
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
             var quantity = obj.transform.Find("Quantity").GetComponent<TextMeshProUGUI>();
-            GameObject enough = obj.transform.Find("Enough").GetComponent<GameObject>();
+            GameObject enough = obj.transform.Find("Enough").gameObject;
+            enough.SetActive(item.isEnough());
             obj.GetComponent<ExchangeItemController>().Item = item;
 
             Button btn = obj.GetComponent<Button>();
@@ -112,6 +117,8 @@ public class ExchangeDeskManager : ItemsManager
         InventoryManager.Instance.addItem(receivedItem);
         InventoryManager.Instance.ListItems();
 
+        objExchanged.SetActive(true);
+        objExchange.SetActive(false);
     }
 
     public void ResetExcahngeDesk()

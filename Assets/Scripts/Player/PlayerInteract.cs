@@ -9,6 +9,8 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField]
     private float distance = 3f;
     [SerializeField]
+    private float radius = 0.2f; // Bán kính "hình trụ" dò tìm - tăng lên nếu vẫn khó bắt vật thể nhỏ
+    [SerializeField]
     private LayerMask mask;
     private PlayerUI playerUI;
     private InputManager inputManager;
@@ -30,7 +32,9 @@ public class PlayerInteract : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * distance);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, distance, mask))
+        // SphereCast quét một hình cầu bán kính "radius" dọc theo đường ray,
+        // "chỉ tương tác 1 vật thể tại 1 thời điểm" được giữ nguyên tự nhiên.
+        if (Physics.SphereCast(ray, radius, out hit, distance, mask))
         {
             Interactable interactable = hit.collider.GetComponent<Interactable>();
             if (interactable != null)
