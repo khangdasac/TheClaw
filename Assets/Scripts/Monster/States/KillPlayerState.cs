@@ -37,7 +37,7 @@ public class KillPlayerState : BaseState
 
         if(deltaTime > 1.5f)
         {
-            if(!monster.gameOverUI.active)
+            if (!monster.gameOverUI.active)
                 monster.gameOverUI.SetActive(true);
         }
 
