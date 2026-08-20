@@ -717,7 +717,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 597.32086, y: 146}
+  m_AnchoredPosition: {x: 597.32086, y: 218}
   m_SizeDelta: {x: 659.91, y: 436.211}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &525971060
@@ -989,8 +989,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 597.32086, y: -143.724}
-  m_SizeDelta: {x: 659.91, y: 115.504}
+  m_AnchoredPosition: {x: 597.32086, y: -115}
+  m_SizeDelta: {x: 659.91, y: 176.284}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &952022808
 MonoBehaviour:
@@ -1012,7 +1012,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Tip: Hold E to sprint, press Q to open your inventory.'
+  m_text: "Tips: \n- Hold \"Shift\" to run.\n- Hold \"Ctrl\" to crouch.\n- Press
+    \"Q\" to open inventory.\n- Press or hold \"E\" to interact."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a7000296b36c1b4f936dad33e7994f8, type: 2}
   m_sharedMaterial: {fileID: -8936364054267919938, guid: 1a7000296b36c1b4f936dad33e7994f8, type: 2}
@@ -1870,7 +1871,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 662, y: -302}
+  m_AnchoredPosition: {x: 662, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1597951867
