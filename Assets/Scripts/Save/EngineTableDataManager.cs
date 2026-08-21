@@ -26,7 +26,7 @@ public class EngineTableDataManager : MonoBehaviour
 
     public EngineTableData GetEngineTableData()
     {
-        return new EngineTableData(engine.active, wiringSystem.active, bigBattery.active);
+        return new EngineTableData(wiringSystem.active, bigBattery.active, engine.active);
     }
     public void SetEngineTableData(EngineTableData engineTableData)
     {

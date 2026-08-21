@@ -7,7 +7,6 @@ public class KillPlayerState : BaseState
 {
     private bool isPlayed;
     private float deltaTime;
-    private bool isContinue;
     private Animator continueAnimator;
     public override void Enter()
     {
@@ -25,6 +24,7 @@ public class KillPlayerState : BaseState
     {
 
         PlayerGameplay.Instance.isGameOver = true;
+        GameManager.Instance.SaveGame();
         monster.animator.SetBool("isGameOver", PlayerGameplay.Instance.isGameOver);
         playerCamera.transform.LookAt(monster.transform.position + Vector3.up * 6f);
 
@@ -32,6 +32,8 @@ public class KillPlayerState : BaseState
 
         monster.Agent.isStopped = true;
         monster.Agent.velocity = Vector3.zero;
+
+        
 
         deltaTime += Time.deltaTime;
 

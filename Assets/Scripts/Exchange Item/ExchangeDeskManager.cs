@@ -12,6 +12,8 @@ public class ExchangeDeskManager : ItemsManager
 
     public bool isEnough;
 
+    public bool isExchanged = false;
+
     public Item receivedItem;
 
     [Header("Toggle when exchanged")]
@@ -117,6 +119,8 @@ public class ExchangeDeskManager : ItemsManager
         InventoryManager.Instance.addItem(receivedItem);
         InventoryManager.Instance.ListItems();
 
+        isExchanged = true;
+
         objExchanged.SetActive(true);
         objExchange.SetActive(false);
     }
@@ -131,4 +135,42 @@ public class ExchangeDeskManager : ItemsManager
         ListItems();
     }
 
+    public ExchangeDeskData toExchangeDeskData()
+    {
+        ExchangeItemData[] exchangeItems = new ExchangeItemData[items.Count];
+        for (int i = 0; i < items.Count; i++)
+        {
+            exchangeItems[i] = new ExchangeItemData(items[i].id, items[i].quantity);
+        }
+        return new ExchangeDeskData(isExchanged, exchangeItems);
+    }
+
+    public ExchangeDeskData toExchangeDeskDataDefault()
+    {
+        ExchangeItemData[] exchangeItems = new ExchangeItemData[items.Count];
+        for (int i = 0; i < items.Count; i++)
+        {
+            exchangeItems[i] = new ExchangeItemData(items[i].id, 0);
+        }
+        return new ExchangeDeskData(false, exchangeItems);
+    }
+
+    public void LoadExchangeDeskData(ExchangeDeskData exchangeDeskData)
+    {
+        isExchanged = exchangeDeskData.isExchanged;
+
+        objExchanged.SetActive(isExchanged);
+        objExchange.SetActive(!isExchanged);
+
+        foreach (ExchangeItemData itemData in exchangeDeskData.exchangeItems)
+        {
+            ExchangeItem item = (ExchangeItem)items.Find(i => i.id == itemData.id);
+            if (item != null)
+            {
+                item.quantity = itemData.quantity;
+            }
+        }
+
+        ListItems();
+    }
 }

@@ -11,9 +11,9 @@ public class GameManager : MonoBehaviour
     public TextAsset jsonFile;
 
     public InventoryManager inventoryManager;
-    public ExchangeDeskManager exchangeDeskManager_1;
-    public ExchangeDeskManager exchangeDeskManager_2;
-    public ExchangeDeskManager exchangeDeskManager_3;
+    public ExchangeDeskManager exchangeDeskManager01;
+    public ExchangeDeskManager exchangeDeskManager02;
+    public ExchangeDeskManager exchangeDeskManager03;
 
     public bool isLoadGameData;
     public bool isLoadSettingData;
@@ -34,9 +34,9 @@ public class GameManager : MonoBehaviour
             {
                 LoadNewGame();
                 inventoryManager.ResetInventory();
-                exchangeDeskManager_1.ResetExcahngeDesk();
-                exchangeDeskManager_2.ResetExcahngeDesk();
-                exchangeDeskManager_3.ResetExcahngeDesk();
+                exchangeDeskManager01.ResetExcahngeDesk();
+                exchangeDeskManager02.ResetExcahngeDesk();
+                exchangeDeskManager03.ResetExcahngeDesk();
             }
         }
 
@@ -52,7 +52,16 @@ public class GameManager : MonoBehaviour
         EngineTableData engineTableData = EngineTableDataManager.Instance.GetEngineTableData();
         SerializableTransform playerTransform = PlayerDataManager.Instance.GetPlayerTransform();
         SerializableTransform monsterTransform = MonsterDataManager.Instance.GetMonsterTransform();
-        gameData = new GameData(cabinetDatas, engineTableData, playerTransform, monsterTransform);
+
+        gameData = new GameData(
+            cabinetDatas,
+            engineTableData,
+            playerTransform,
+            monsterTransform,
+            exchangeDeskManager01.toExchangeDeskData(),
+            exchangeDeskManager02.toExchangeDeskData(),
+            exchangeDeskManager03.toExchangeDeskData()
+        );
 
         string json = JsonUtility.ToJson(gameData);
 
@@ -73,9 +82,14 @@ public class GameManager : MonoBehaviour
 
             // Cập nhật vị trí người chơi
             CabinetListManager.Instance.SetCabinetDatas(gameData.cabinetDatas);
-            PlayerDataManager.Instance.SetPlayerTransform(gameData.playerTransform);
+            PlayerDataManager.Instance.SetPlayerTransform(PlayerDataManager.Instance.GetPlayerTransformDefault());
+            MonsterDataManager.Instance.SetMonsterTransform(MonsterDataManager.Instance.GetMonsterTransformDefault());
+
             EngineTableDataManager.Instance.SetEngineTableData(gameData.engineTableData);
-            MonsterDataManager.Instance.SetMonsterTransform(gameData.monsterTransform);
+
+            exchangeDeskManager01.LoadExchangeDeskData(gameData.exchangeDeskData01);
+            exchangeDeskManager02.LoadExchangeDeskData(gameData.exchangeDeskData02);
+            exchangeDeskManager03.LoadExchangeDeskData(gameData.exchangeDeskData03);
         }
         else
         {
@@ -90,7 +104,15 @@ public class GameManager : MonoBehaviour
         EngineTableData engineTableData = EngineTableDataManager.Instance.GetEngineTableData();
         SerializableTransform playerTransform = PlayerDataManager.Instance.GetPlayerTransformDefault();
         SerializableTransform monsterTransform = MonsterDataManager.Instance.GetMonsterTransformDefault();
-        gameData = new GameData(cabinetDatas, engineTableData, playerTransform, monsterTransform);
+        gameData = new GameData(
+            cabinetDatas,
+            engineTableData,
+            playerTransform,
+            monsterTransform, 
+            exchangeDeskManager01.toExchangeDeskDataDefault(),
+            exchangeDeskManager02.toExchangeDeskDataDefault(),
+            exchangeDeskManager03.toExchangeDeskDataDefault()
+            );
 
         string json = JsonUtility.ToJson(gameData);
 
