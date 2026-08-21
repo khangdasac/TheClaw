@@ -52,8 +52,6 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
-
         if (PlayerGameplay.Instance.IsContinue())
         {
             if (onFoot.LowerDown.IsPressed())
@@ -67,9 +65,6 @@ public class InputManager : MonoBehaviour
             playerMotor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
             playerMotor.FootStepSound(onFoot.Movement.ReadValue<Vector2>());
         }
-
-
-
     }
 
     private void LateUpdate()

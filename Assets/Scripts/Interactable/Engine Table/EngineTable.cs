@@ -46,7 +46,7 @@ public class EngineTable : Interactable
         isEnough = engine.active && wiringSystem.active && bigBattery.active;
         InventoryManager.Instance.ListItems();
 
-       keypad.UpdateStateKeypad(isEnough);
+        keypad.UpdateStateKeypad(isEnough);
     }
 
 
