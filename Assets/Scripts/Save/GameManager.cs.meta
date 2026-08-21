@@ -3,7 +3,12 @@ guid: 37558af2b779b234e8c7a7aa5125a1dd
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - jsonFile: {instanceID: 0}
+  - inventoryManager: {instanceID: 0}
+  - exchangeDeskManager01: {instanceID: 0}
+  - exchangeDeskManager02: {instanceID: 0}
+  - exchangeDeskManager03: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
